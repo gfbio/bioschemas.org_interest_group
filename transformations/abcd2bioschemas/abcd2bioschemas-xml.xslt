@@ -76,7 +76,7 @@ exclude-result-prefixes="xsl md panxslt set">
       <datePublished>
         <xsl:choose>
           <xsl:when test="$dataset_version_issued">
-            <xsl:value-of select="substring-before($dataset_version_issued,'T')"/>
+            <xsl:value-of select="$dataset_version_issued"/>
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="substring-before($dataset_modified,'T')"/>
@@ -92,8 +92,8 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:if test="$dataset_version_major">
         <version>
           <xsl:value-of select="$dataset_version_major" />
-          <xsl:if test="$dataset_version_minor">.<xsl:value-of select="$dataset_version_major" />
-            <xsl:if test="$dataset_version_modifier">.<xsl:value-of select="$dataset_version_modifier" />
+          <xsl:if test="$dataset_version_minor"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_major" />
+            <xsl:if test="$dataset_version_modifier"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_modifier" />
             </xsl:if>
           </xsl:if>
         </version>
@@ -314,15 +314,15 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:otherwise>
               </xsl:choose>
               
-              <!-- works for: Organization -->
+              <!-- affiliation: Organization -->
               <xsl:if test="./abcd:Organisation">
-                <worksFor type="Organization">
+                <affiliation type="Organization">
                   <!-- name -->
                   <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
                   <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
                     <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
                   </xsl:if>
-                </worksFor>
+                </affiliation>
               </xsl:if>
             </author>
           </xsl:when>
