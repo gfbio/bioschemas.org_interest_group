@@ -12,6 +12,8 @@ exclude-result-prefixes="xsl md panxslt set">
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:variable name="dataset_id" select="/abcd:DataSets/abcd:DataSet/abcd:DatasetGUID"></xsl:variable>
+  <xsl:variable name="dataset_icon" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IconURI"></xsl:variable>
+  <xsl:variable name="dataset_access" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:DirectAccessURI"></xsl:variable>
   <xsl:variable name="dataset_title" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Title"></xsl:variable>
   <xsl:variable name="dataset_details" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Details"></xsl:variable>
   <xsl:variable name="dataset_url" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
@@ -63,6 +65,22 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:choose>
        <!-- </xsl:variable>-->
       </description>
+      <xsl:if test="$dataset_icon">
+        <image><xsl:value-of select="$dataset_icon" /></image>
+      </xsl:if>
+      <xsl:if test="$dataset_access">
+        <distribution type="DataDownload">
+          <xsl:choose>
+            <xsl:when test="contains($dataset_access,'.zip')">
+              <contentUrl><xsl:value-of select="$dataset_access" /></contentUrl>
+              <encodingFormat>application/zip</encodingFormat>
+            </xsl:when>
+            <xsl:otherwise>
+              <url><xsl:value-of select="$dataset_access" /></url>
+            </xsl:otherwise>
+          </xsl:choose>
+        </distribution>
+      </xsl:if>
       <inLanguage>en</inLanguage>
       <xsl:for-each select="$recordbasis[not(.=preceding::*)]">  
         <additionalType><xsl:value-of select="."/></additionalType>
