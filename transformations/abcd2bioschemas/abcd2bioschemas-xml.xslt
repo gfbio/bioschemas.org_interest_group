@@ -297,7 +297,7 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
@@ -324,6 +324,11 @@ exclude-result-prefixes="xsl md panxslt set">
                   </xsl:if>
                 </affiliation>
               </xsl:if>
+
+              <!-- jobTitle: Roles -->
+              <xsl:for-each select="./abcd:Roles/abcd:Role">
+                <jobTitle><xsl:value-of select="."/></jobTitle>
+              </xsl:for-each>
             </author>
           </xsl:when>
           <xsl:otherwise>
@@ -357,7 +362,7 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
