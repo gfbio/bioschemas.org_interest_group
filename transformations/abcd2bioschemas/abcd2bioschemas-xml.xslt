@@ -24,7 +24,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="dataset_version_modifier" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Modifier"></xsl:variable>
   <xsl:variable name="dataset_version_issued" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:DateIssued"></xsl:variable>
   <xsl:variable name="dataset_direct_access" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:DirectAccessURI"></xsl:variable>
-  <xsl:variable name="ipr_statement" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Citations/abcd:Citation/abcd:Text"></xsl:variable>
+  <xsl:variable name="ipr_statement" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Citations/abcd:Citation"></xsl:variable>
   <xsl:variable name="dataset_uri" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
   <xsl:variable name="terms_of_use" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:TermsOfUseStatements/abcd:TermsOfUse"></xsl:variable>
   <xsl:variable name="licence" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Licenses/abcd:License"></xsl:variable>
@@ -104,7 +104,7 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="./abcd:Text">
             <name><xsl:value-of select="./abcd:Text"/></name>
           </xsl:if>
-          <xsl:if test="./abcd:Text">
+          <xsl:if test="./abcd:Details">
             <description><xsl:value-of select="./abcd:Details"/></description>
           </xsl:if>
           <xsl:if test="./abcd:URI">
@@ -122,7 +122,7 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="./abcd:Text">
             <name><xsl:value-of select="./abcd:Text"/></name>
           </xsl:if>
-          <xsl:if test="./abcd:Text">
+          <xsl:if test="./abcd:Details">
             <description><xsl:value-of select="./abcd:Details"/></description>
           </xsl:if>
           <xsl:if test="./abcd:URI">
@@ -133,6 +133,25 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:if>
         </usageInfo>
       </xsl:for-each>
+
+      <xsl:for-each select="$ipr_statement">
+        <usageInfo>
+          <xsl:attribute name="type">CreativeWork</xsl:attribute>
+          <xsl:if test="./abcd:Text">
+            <name><xsl:value-of select="./abcd:Text"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:Details">
+            <description><xsl:value-of select="./abcd:Details"/></description>
+          </xsl:if>
+          <xsl:if test="./abcd:URI">
+            <url><xsl:value-of select="./abcd:URI"/></url>
+          </xsl:if>
+          <xsl:if test="./abcd:URL">
+            <url><xsl:value-of select="./abcd:URL"/></url>
+          </xsl:if>
+        </usageInfo>
+      </xsl:for-each>
+
       
     <xsl:for-each select="$country[not(.=preceding::*)]">  
       <spatialCoverage type="Country">

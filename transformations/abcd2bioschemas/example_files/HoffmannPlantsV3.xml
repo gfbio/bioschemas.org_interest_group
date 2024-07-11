@@ -36,6 +36,11 @@
                         <Text>CC BY 4.0</Text>
                     </License>
                 </Licenses>
+                <TermsOfUseStatements>
+                    <TermsOfUse language="en">
+                        <Text>Textual metadata on specimens from the Herbarium Berolinense (B) are released under the Creative Commons 1.0 Public Domain Dedication waiver [http://creativecommons.org/publicdomain/zero/1.0/].</Text>
+                    </TermsOfUse>
+                </TermsOfUseStatements>
                 <Citations>
                     <Citation language="en">
                         <Text>Hoffmann, A. (1999). Plants at Crater Road of Queen Elizabeth National Park, Uganda. [Dataset]. Data Publisher: Botanic Garden and Botanical Museum Berlin.  https://data.bgbm.org/dataset/gfbio/0004/.</Text>
