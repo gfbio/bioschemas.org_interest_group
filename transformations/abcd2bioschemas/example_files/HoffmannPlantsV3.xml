@@ -62,6 +62,10 @@
                     <Person>
                         <FullName>Anke Hoffmann</FullName>
                     </Person>
+                    <Roles>
+                        <Role>Database administrator</Role>
+                        <Role>Project manager</Role>
+                    </Roles>
                     <Addresses>
                         <Address>Königin-Luise-Str. 6-8, 14195 Berlin, Germany</Address>
                     </Addresses>
