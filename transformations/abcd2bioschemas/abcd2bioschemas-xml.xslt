@@ -12,6 +12,7 @@ exclude-result-prefixes="xsl md panxslt set">
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:variable name="dataset_id" select="/abcd:DataSets/abcd:DataSet/abcd:DatasetGUID"></xsl:variable>
+  <xsl:variable name="dataset_coverage" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Coverage"></xsl:variable>
   <xsl:variable name="dataset_title" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Title"></xsl:variable>
   <xsl:variable name="dataset_details" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Details"></xsl:variable>
   <xsl:variable name="dataset_url" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
@@ -63,6 +64,9 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:choose>
        <!-- </xsl:variable>-->
       </description>
+      <xsl:if test="$dataset_coverage">
+        <keywords><xsl:value-of select="$dataset_coverage"/></keywords>
+      </xsl:if>
       <inLanguage>en</inLanguage>
       <xsl:for-each select="$recordbasis[not(.=preceding::*)]">  
         <additionalType><xsl:value-of select="."/></additionalType>
@@ -216,6 +220,7 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:if>
       
       <!-- Keywords -->
+      <!-- TODO: keywords instead of keyword -->
       <xsl:for-each select="$scope_taxonomic[not(.=preceding::*)]">  
         <keyword><xsl:value-of select="."/></keyword>
       </xsl:for-each>

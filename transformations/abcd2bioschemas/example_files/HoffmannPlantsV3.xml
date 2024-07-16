@@ -22,6 +22,7 @@
                     <Title>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</Title>
                     <Details>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). Project data from Dr. Anke Hoffmann, supplementary data of the dissertation: "Hoffmann, Anke (1999). Habitat use and population dynamics of small mammals in the grasslands of the Queen Elizabeth National Park, Uganda. Dissertation Technische Universität Carolo-Wilhelmina zu Braunschweig. Braunschweig." This dataset was mobilized in co-operation with the DFG-funded project reBiND (http://rebind.bgbm.org/). The following Abstract describes the dissertation: In the grasslands of Queen Elizabeth National Park in Uganda small mammal populations were studied between April 1995 and March 1997 using the capture-mark-release-method and radio-telemetry. The 6 study plots were situated in the Imperata-Cymbopogon-grassland and in the bushland-grassland-mosaic and differed mainly in vegetation, habitat structures, cover and grazing pressure due to big game. The effect of fire was an important aspect to all questions of the study. In total 5.702 catches including 1.295 individuals out of 20 species of the families Muridae (12), Myoxidae (1) und Soricidae (7) were recorded in 65 trapping sessions. The most abundant species were Lemniscomys striatus, Mastomys natalensis and Arvicanthis nairobae. For all plots zoocoenosis and dominance structures are described as well as similarity of fauna and species diversity are compared. The population structures of the 3 most common species are compared in 2 plots of their highest abundance. Emphasis of the investigation is laid on the population development, sex ratio, weight and reproduction. Beyond the survival and turnover rates are determined for these populations. For all species habitat preferences are described. The range lenghts of L. striatus and M. natalensis were ascertained for different plots. Their dependence of population density, sex, sexual activity, body weight, rainfall and bush fire is revised. In all 9 L. striatus, 7 M. natalensis and 8 A. nairobae were radio-tracked successfully and their home range sizes, utilization patterns and activities investigated. For these species an inverse relationship between home range size and population density exists.</Details>
                     <URI>https://data.bgbm.org/dataset/gfbio/0004/</URI>
+                    <Coverage>Uganda (1995-1997)</Coverage>
                 </Representation>
             </Description>
             <RevisionData>
@@ -100,6 +101,13 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Stratigraphy>
+                        <ChronostratigraphicTerms>
+                            <ChronostratigraphicTerm>
+                                <Term>Quaternary</Term>
+                            </ChronostratigraphicTerm>
+                        </ChronostratigraphicTerms>
+                    </Stratigraphy>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
