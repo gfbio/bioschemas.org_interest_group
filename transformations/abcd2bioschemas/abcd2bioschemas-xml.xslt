@@ -220,21 +220,20 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:if>
       
       <!-- Keywords -->
-      <!-- TODO: keywords instead of keyword -->
       <xsl:for-each select="$scope_taxonomic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$scope_geoecological[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$chronostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$biostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       
       <xsl:for-each select="$taxon_name[not(.=preceding::*)]">  
