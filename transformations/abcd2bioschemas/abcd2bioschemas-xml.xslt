@@ -139,6 +139,7 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:variable name="unit_coordinates" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
       <xsl:variable name="unit_latitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LatitudeDecimal"></xsl:variable>
       <xsl:variable name="unit_longitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LongitudeDecimal"></xsl:variable>
+      <xsl:variable name="unit_spatial_datum" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:SpatialDatum"></xsl:variable>
       <xsl:variable name="unit_altitude" select="./abcd:Gathering/abcd:Altitude"></xsl:variable>
       <xsl:variable name="unit_country" select="./abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
       <xsl:variable name="unit_named_areas" select="./abcd:Gathering/abcd:NamedAreas/abcd:NamedArea"></xsl:variable>
@@ -161,6 +162,9 @@ exclude-result-prefixes="xsl md panxslt set">
               </xsl:if>
               <xsl:if test="$unit_longitude">
                 <longitude xsi:type="xs:double"><xsl:value-of select="$unit_longitude"/></longitude>
+              </xsl:if>
+              <xsl:if test="$unit_spatial_datum">
+                <additionalType><xsl:value-of select="$unit_spatial_datum"/></additionalType>
               </xsl:if>
               <xsl:if test="$unit_altitude">
                 <elevation xsi:type="xs:double"><xsl:value-of select="$unit_altitude"/></elevation>
