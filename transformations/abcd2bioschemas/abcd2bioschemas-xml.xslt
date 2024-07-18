@@ -134,13 +134,53 @@ exclude-result-prefixes="xsl md panxslt set">
         </usageInfo>
       </xsl:for-each>
       
-    <xsl:for-each select="$country[not(.=preceding::*)]">  
-      <spatialCoverage type="Country">
-        <name><xsl:value-of select="."/></name>
-        <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
-      </spatialCoverage>
+    <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit">
+      <xsl:variable name="unit_locality" select="./abcd:Gathering/abcd:LocalityText"></xsl:variable>
+      <xsl:variable name="unit_coordinates" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
+      <xsl:variable name="unit_latitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LatitudeDecimal"></xsl:variable>
+      <xsl:variable name="unit_longitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LongitudeDecimal"></xsl:variable>
+      <xsl:variable name="unit_altitude" select="./abcd:Gathering/abcd:Altitude"></xsl:variable>
+      <xsl:variable name="unit_country" select="./abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
+      <xsl:variable name="unit_named_areas" select="./abcd:Gathering/abcd:NamedAreas/abcd:NamedArea"></xsl:variable>
+
+      <xsl:for-each select="$unit_country[not(.=preceding::*)]">  
+        <spatialCoverage type="Country">
+          <name><xsl:value-of select="."/></name>
+          <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
+        </spatialCoverage>
+      </xsl:for-each>
+
+      <xsl:for-each select="$unit_locality[not(.=preceding::*)]">  
+        <spatialCoverage type="Place">
+          <name><xsl:value-of select="."/></name>
+          <description><xsl:value-of select="."/></description>
+          <xsl:if test="$unit_coordinates">
+            <geo type="GeoCoordinates">
+              <xsl:if test="$unit_latitude">
+                <latitude xsi:type="xs:double"><xsl:value-of select="$unit_latitude"/></latitude>
+              </xsl:if>
+              <xsl:if test="$unit_longitude">
+                <longitude xsi:type="xs:double"><xsl:value-of select="$unit_longitude"/></longitude>
+              </xsl:if>
+              <xsl:if test="$unit_altitude">
+                <elevation xsi:type="xs:double"><xsl:value-of select="$unit_altitude"/></elevation>
+              </xsl:if>
+            </geo>
+          </xsl:if>
+          <xsl:if test="$unit_named_areas">
+            <xsl:for-each select="$unit_named_areas">
+              <containedInPlace type="Place">
+                <name><xsl:value-of select="."/></name>
+                <xsl:if test="./abcd:AreaClass">
+                  <additionalType><xsl:value-of select="./abcd:AreaClass"/></additionalType>
+                </xsl:if>
+              </containedInPlace>
+            </xsl:for-each>
+          </xsl:if>
+        </spatialCoverage>
+      </xsl:for-each>
     </xsl:for-each>
-      
+
     <!-- get bounding box coordinates or coordinate pair, if there is only one -->
     <xsl:if test="$coordinates/abcd:LatitudeDecimal and $coordinates/abcd:LongitudeDecimal">
       <spatialCoverage type="Place">
