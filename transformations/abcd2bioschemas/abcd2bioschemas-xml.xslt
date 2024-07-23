@@ -42,7 +42,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
-  
+  <xsl:variable name="multimedia_object" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MultimediaObjects/abcd:MultimediaObject"></xsl:variable>
 
         
 
@@ -214,6 +214,20 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:if>
         </temporalCoverage>
       </xsl:if>
+
+      <!-- associatedMedia -->
+      <xsl:for-each select="$multimedia_object">
+        <associatedMedia>
+          <contentUrl><xsl:value-of select="./abcd:FileURI"/></contentUrl>
+          <mainEntityOfPage><xsl:value-of select="./abcd:ProductURI"/></mainEntityOfPage>
+          <encodingFormat><xsl:value-of select="./abcd:MIMEType"/></encodingFormat>
+          <xsl:for-each select="./IPR/Licenses/License">
+            <name><xsl:value-of select="./Text"/></name>
+            <description><xsl:value-of select="./Details"/></description>
+            <uri><xsl:value-of select="./URI"/></uri>
+          </xsl:for-each>
+        </associatedMedia>
+      </xsl:for-each>    
       
       <!-- Keywords -->
       <xsl:for-each select="$scope_taxonomic[not(.=preceding::*)]">  
