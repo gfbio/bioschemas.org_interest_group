@@ -34,6 +34,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="scope_geoecological" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:GeoecologicalTerms/*[self::abcd:GeoecologicalTerm or self::abcd:GeoEcologicalTerm]"></xsl:variable>
   
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
+  <xsl:variable name="kind_of_unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:KindOfUnit"></xsl:variable>
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
   <xsl:variable name="gathering_date" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:DateTime"></xsl:variable>
@@ -65,6 +66,9 @@ exclude-result-prefixes="xsl md panxslt set">
       </description>
       <inLanguage>en</inLanguage>
       <xsl:for-each select="$recordbasis[not(.=preceding::*)]">  
+        <additionalType><xsl:value-of select="."/></additionalType>
+      </xsl:for-each>
+      <xsl:for-each select="$kind_of_unit[not(.=preceding::*)]">  
         <additionalType><xsl:value-of select="."/></additionalType>
       </xsl:for-each>
       <xsl:if test="$dataset_created">
