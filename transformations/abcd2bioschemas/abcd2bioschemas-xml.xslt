@@ -42,9 +42,9 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
+  <xsl:variable name="biotope" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope"></xsl:variable>
+  <xsl:variable name="project_title" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Project/abcd:ProjectTitle"></xsl:variable>
   
-
-        
 
   <xsl:template match="/*">
     <jsonld>
@@ -229,6 +229,12 @@ exclude-result-prefixes="xsl md panxslt set">
         <keyword><xsl:value-of select="."/></keyword>
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
+        <keyword><xsl:value-of select="."/></keyword>
+      </xsl:for-each>
+      <xsl:for-each select="$biotope[not(.=preceding::*)]">  
+        <keyword><xsl:value-of select="."/></keyword>
+      </xsl:for-each>
+      <xsl:for-each select="$project_title[not(.=preceding::*)]">  
         <keyword><xsl:value-of select="."/></keyword>
       </xsl:for-each>
       
