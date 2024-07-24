@@ -135,7 +135,6 @@ exclude-result-prefixes="xsl md panxslt set">
         </usageInfo>
       </xsl:for-each>
 
-    <!-- for each unit check if recordURI is a HTTP URL (contains a http). If so, use it as both identifier and url. If not, use the recordURI as identifier. -->
     <xsl:for-each select="$unit">
       <xsl:if test="./abcd:RecordURI">
         <about type="BioSample">
