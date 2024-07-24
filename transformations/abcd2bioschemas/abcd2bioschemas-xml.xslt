@@ -33,6 +33,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="scope_taxonomic" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:TaxonomicTerms/abcd:TaxonomicTerm"></xsl:variable>
   <xsl:variable name="scope_geoecological" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:GeoecologicalTerms/*[self::abcd:GeoecologicalTerm or self::abcd:GeoEcologicalTerm]"></xsl:variable>
   
+  <xsl:variable name="unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit"></xsl:variable>
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
@@ -42,7 +43,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
-  
+  <xsl:variable name="record_uri" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordURI"></xsl:variable>
 
         
 
@@ -133,6 +134,19 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:if>
         </usageInfo>
       </xsl:for-each>
+
+    <!-- for each unit check if recordURI is a HTTP URL (contains a http). If so, use it as both identifier and url. If not, use the recordURI as identifier. -->
+    <xsl:for-each select="$unit">
+      <xsl:if test="./abcd:RecordURI">
+        <about type="BioSample">
+          <xsl:variable name="record_uri" select="./abcd:RecordURI"></xsl:variable>
+          <identifier><xsl:value-of select="$record_uri"/></identifier>
+          <xsl:if test="contains($record_uri,'http')">
+            <url><xsl:value-of select="$record_uri"/></url>
+          </xsl:if>
+        </about>
+      </xsl:if>
+    </xsl:for-each>
       
     <xsl:for-each select="$country[not(.=preceding::*)]">  
       <spatialCoverage type="Country">
