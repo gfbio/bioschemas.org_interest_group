@@ -5182,6 +5182,12 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <Name>Woodland</Name>
+                    </Biotope>
+                    <Project>
+                        <ProjectTitle>Amaranthaceae in Uganda</ProjectTitle>
+                    </Project>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/301</RecordURI>
             </Unit>
