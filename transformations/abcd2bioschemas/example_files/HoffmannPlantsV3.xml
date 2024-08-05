@@ -84,6 +84,36 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <MultiMediaObjects>
+                    <MultiMediaObject>
+                        <FileURI>https://image.bgbm.org/images/internal/HerbarThumbs/test0</FileURI>
+                        <ProductURI>https://herbarium.bgbm.org/object/test0</ProductURI>
+                        <Format>image/jpeg</Format>
+                        <IPR>
+                            <Licenses>
+                                <License>
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                        <Creator>Hoffmann, Anke</Creator>
+                    </MultiMediaObject>
+                    <MultiMediaObject>
+                        <FileURI>https://herbarium.bgbm.org/data/iiif/test0/manifest.json</FileURI>
+                        <ProductURI>https://iiif.bgbm.org/?manifest=https://herbarium.bgbm.org/object/test0/manifest.json</ProductURI>
+                        <Format>application/json</Format>
+                        <IPR>
+                            <Licenses>
+                                <License>
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                        <Creator>Hoffmann, Anke</Creator>
+                    </MultiMediaObject>
+                </MultiMediaObjects>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -150,6 +180,34 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <MultiMediaObjects>
+                    <MultiMediaObject>
+                        <FileURI>https://image.bgbm.org/images/internal/HerbarThumbs/test1</FileURI>
+                        <ProductURI>https://herbarium.bgbm.org/object/test1</ProductURI>
+                        <Format>image/jpeg</Format>
+                        <IPR>
+                            <Licenses>
+                                <License language="en">
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                    </MultiMediaObject>
+                    <MultiMediaObject>
+                        <FileURI>https://herbarium.bgbm.org/data/iiif/test1/manifest.json</FileURI>
+                        <ProductURI>https://iiif.bgbm.org/?manifest=https://herbarium.bgbm.org/object/test1/manifest.json</ProductURI>
+                        <Format>application/json</Format>
+                        <IPR>
+                            <Licenses>
+                                <License language="en">
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                    </MultiMediaObject>
+                </MultiMediaObjects>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
