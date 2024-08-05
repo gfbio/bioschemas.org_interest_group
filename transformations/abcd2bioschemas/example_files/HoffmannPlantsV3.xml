@@ -157,7 +157,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Max Mustermann</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
@@ -215,7 +215,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Anna Förster</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
