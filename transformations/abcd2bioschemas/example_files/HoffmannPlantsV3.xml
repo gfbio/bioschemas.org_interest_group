@@ -208,6 +208,7 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <KindOfUnit>herbarium sheet</KindOfUnit>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -604,6 +605,7 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <KindOfUnit>leaves</KindOfUnit>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
