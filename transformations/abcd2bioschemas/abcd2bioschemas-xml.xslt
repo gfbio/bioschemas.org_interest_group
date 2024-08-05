@@ -34,6 +34,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="scope_geoecological" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:GeoecologicalTerms/*[self::abcd:GeoecologicalTerm or self::abcd:GeoEcologicalTerm]"></xsl:variable>
   
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
+  <xsl:variable name="source_reference" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:SourceReference"></xsl:variable>
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
   <xsl:variable name="gathering_date" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:DateTime"></xsl:variable>
@@ -230,6 +231,21 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
         <keyword><xsl:value-of select="."/></keyword>
+      </xsl:for-each>
+
+      <!-- citation -->
+      <xsl:for-each select="$source_reference[not(.=preceding::*)]">  
+        <citation type="CreativeWork">
+          <xsl:if test="./abcd:TitleCitation">
+            <name><xsl:value-of select="./abcd:TitleCitation"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:CitationDetail">
+            <description><xsl:value-of select="./abcd:CitationDetail"/></description>
+          </xsl:if>
+          <xsl:if test="./abcd:URI">
+            <identifier><xsl:value-of select="./abcd:URI"/></identifier>
+          </xsl:if>
+        </citation>
       </xsl:for-each>
       
       <xsl:for-each select="$taxon_name[not(.=preceding::*)]">  
