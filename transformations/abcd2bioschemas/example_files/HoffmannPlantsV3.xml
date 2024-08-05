@@ -280,9 +280,7 @@
                     </DateTime>
                     <Agents>
                         <GatheringAgent>
-                            <Person>
-                                <FullName>Anke Hoffmann</FullName>
-                            </Person>
+                            <AgentText>Anna Förster, Arno Förster</AgentText>
                         </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>

@@ -416,116 +416,51 @@ exclude-result-prefixes="xsl md panxslt set">
       <!-- After updating to XSLT 2.0, both the code below and the author mapping code can be moved to a separate function -->
       <xsl:for-each select="$gathering_agents[not(.=preceding::*)]">  
         <xsl:choose>
-          <xsl:when test="./abcd:Person">
-            <contributor type="Person">
-              <!-- identifier -->
-              <xsl:if test="./abcd:URIs/*[self::abcd:URI or self::abcd:URL]">
-                <xsl:choose>        
-                  <xsl:when test="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][@preferred='true']">
-                    <xsl:attribute name="id"><xsl:value-of select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][@preferred='true'][1]"/></xsl:attribute>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:attribute name="id"><xsl:value-of select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][1]"/></xsl:attribute>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <xsl:for-each select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][not(.=preceding::*)]">
-                  <identifier><xsl:value-of select="."/></identifier>
-                </xsl:for-each>
-              </xsl:if>
-              
-              <!-- name -->
-              <name><xsl:value-of select="./abcd:Person/abcd:FullName"/></name>
-              <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:InheritedName">
-                <familyName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:InheritedName"/></familyName>
-              </xsl:if>
-              <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:GivenNames">
-                <givenName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:GivenNames"/></givenName>
-              </xsl:if>
-              
-              <!-- email -->
-              <xsl:choose>        
-                <xsl:when test="./abcd:EmailAddresses/abcd:EmailAddress[@preferred='true']">
-                  <email><xsl:value-of select="./abcd:EmailAddresses/abcd:EmailAddress[@preferred='true'][1]"/></email>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
-                  </xsl:for-each>
-                </xsl:otherwise>
-              </xsl:choose>
+          <xsl:when test="./abcd:Person or ./abcd:Organisation">
+            <xsl:choose>
+              <xsl:when test="./abcd:Person">
+                <contributor type="Person">
+                  
+                  <!-- name -->
+                  <name><xsl:value-of select="./abcd:Person/abcd:FullName"/></name>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:InheritedName">
+                    <familyName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:InheritedName"/></familyName>
+                  </xsl:if>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:GivenNames">
+                    <givenName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:GivenNames"/></givenName>
+                  </xsl:if>
 
-              <!-- phone -->
-              <xsl:choose>        
-                <xsl:when test="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true']">
-                  <telephone><xsl:value-of select="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true'][1]/abcd:Number"/></telephone>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:for-each select="./abcd:TelephoneNumbers/abcd:TelephoneNumber">
-                    <telephone><xsl:value-of select="./abcd:Number"/></telephone>
-                  </xsl:for-each>
-                </xsl:otherwise>
-              </xsl:choose>
+                  <!-- affiliation: Organization -->
+                  <xsl:if test="./abcd:Organisation">
+                    <affiliation type="Organization">
+                      <!-- name -->
+                      <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
+                      <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
+                        <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
+                      </xsl:if>
+                    </affiliation>
+                  </xsl:if>
+                </contributor>
+              </xsl:when>
 
-              <!-- affiliation: Organization -->
-              <xsl:if test="./abcd:Organisation">
-                <affiliation type="Organization">
+              <!-- organisation as contributor -->
+              <xsl:otherwise>
+                <contributor type="Organization">
                   <!-- name -->
                   <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
                   <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
                     <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
                   </xsl:if>
-                </affiliation>
-              </xsl:if>
-            </contributor>
+                </contributor>
+              </xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
           <xsl:otherwise>
-          <!-- organisation as contributor -->
-            <contributor type="Organization">
-              <!-- identifier -->
-              <xsl:if test="./abcd:URIs/*[self::abcd:URI or self::abcd:URL]">
-                <xsl:choose>        
-                  <xsl:when test="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][@preferred='true']">
-                    <xsl:attribute name="id"><xsl:value-of select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][@preferred='true'][1]"/></xsl:attribute>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:attribute name="id"><xsl:value-of select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][1]"/></xsl:attribute>
-                  </xsl:otherwise>
-                </xsl:choose>
-                <xsl:for-each select="./abcd:URIs/*[self::abcd:URI or self::abcd:URL][not(.=preceding::*)]">
-                  <identifier><xsl:value-of select="."/></identifier>
-                </xsl:for-each>
-              </xsl:if>
-              
-              <!-- name -->
-              <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
-              <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
-                <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
-              </xsl:if>
-              
-              <!-- email -->
-              <xsl:choose>        
-                <xsl:when test="./abcd:EmailAddresses/abcd:EmailAddress[@preferred='true']">
-                  <email><xsl:value-of select="./abcd:EmailAddresses/abcd:EmailAddress[@preferred='true'][1]"/></email>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
-                  </xsl:for-each>
-                </xsl:otherwise>
-              </xsl:choose>
-
-              <!-- phone -->
-              <xsl:choose>        
-                <xsl:when test="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true']">
-                  <telephone><xsl:value-of select="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true'][1]/abcd:Number"/></telephone>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:for-each select="./abcd:TelephoneNumbers/abcd:TelephoneNumber">
-                    <telephone><xsl:value-of select="./abcd:Number"/></telephone>
-                  </xsl:for-each>
-                </xsl:otherwise>
-              </xsl:choose>
-            </contributor>
+            <xsl:if test="./abcd:AgentText">
+              <contributor type="Thing">
+                <name><xsl:value-of select="./abcd:AgentText"/></name>
+              </contributor>
+            </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:for-each>
