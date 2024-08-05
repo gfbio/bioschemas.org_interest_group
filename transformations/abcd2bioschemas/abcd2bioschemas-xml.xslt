@@ -140,6 +140,21 @@ exclude-result-prefixes="xsl md panxslt set">
         <about type="BioSample">
           <xsl:variable name="record_uri" select="./abcd:RecordURI"></xsl:variable>
           <identifier><xsl:value-of select="$record_uri"/></identifier>
+          <xsl:if test="./abcd:SourceInstitutionID">
+            <identifier><xsl:value-of select="./abcd:SourceInstitutionID"/></identifier>
+          </xsl:if>
+          <xsl:if test="./abcd:SourceID">
+            <identifier><xsl:value-of select="./abcd:SourceID"/></identifier>
+          </xsl:if>
+          <xsl:if test="./abcd:UnitID">
+            <identifier><xsl:value-of select="./abcd:UnitID"/></identifier>
+          </xsl:if>
+          <xsl:if test="./abcd:UnitIDNumeric">
+            <identifier><xsl:value-of select="./abcd:UnitIDNumeric"/></identifier>
+          </xsl:if>
+          <xsl:if test="./abcd:UnitGUID">
+            <identifier><xsl:value-of select="./abcd:UnitGUID"/></identifier>
+          </xsl:if>
           <xsl:if test="contains($record_uri,'http')">
             <url><xsl:value-of select="$record_uri"/></url>
           </xsl:if>
