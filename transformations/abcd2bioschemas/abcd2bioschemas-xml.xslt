@@ -155,6 +155,9 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="./abcd:UnitGUID">
             <identifier><xsl:value-of select="./abcd:UnitGUID"/></identifier>
           </xsl:if>
+          <xsl:if test="./abcd:CollectorsFieldNumber">
+            <identifier><xsl:value-of select="./abcd:CollectorsFieldNumber"/></identifier>
+          </xsl:if>
           <xsl:if test="contains($record_uri,'http')">
             <url><xsl:value-of select="$record_uri"/></url>
           </xsl:if>

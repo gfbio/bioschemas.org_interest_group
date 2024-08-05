@@ -437,6 +437,7 @@
                 <SourceInstitutionID>B</SourceInstitutionID>
                 <SourceID>HoffmannPlants</SourceID>
                 <UnitID>16</UnitID>
+                <CollectorsFieldNumber>160</CollectorsFieldNumber>
                 <Identifications>
                     <Identification>
                         <Result>
@@ -503,6 +504,7 @@
                 <SourceInstitutionID>B</SourceInstitutionID>
                 <SourceID>HoffmannPlants</SourceID>
                 <UnitID>17</UnitID>
+                <CollectorsFieldNumber>170</CollectorsFieldNumber>
                 <Identifications>
                     <Identification>
                         <Result>
