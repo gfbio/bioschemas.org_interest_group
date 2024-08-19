@@ -34,6 +34,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="scope_geoecological" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:GeoecologicalTerms/*[self::abcd:GeoecologicalTerm or self::abcd:GeoEcologicalTerm]"></xsl:variable>
   
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
+  <xsl:variable name="gathering_agents" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Agents/abcd:GatheringAgent"></xsl:variable>
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
   <xsl:variable name="gathering_date" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:DateTime"></xsl:variable>
@@ -411,8 +412,60 @@ exclude-result-prefixes="xsl md panxslt set">
           <name><xsl:value-of select="$dataset_contributors"/></name>
         </contributor>
       </xsl:if>
+
+      <!-- After updating to XSLT 2.0, both the code below and the author mapping code can be moved to a separate function -->
+      <xsl:for-each select="$gathering_agents[not(.=preceding::*)]">  
+        <xsl:choose>
+          <xsl:when test="./abcd:Person or ./abcd:Organisation">
+            <xsl:choose>
+              <xsl:when test="./abcd:Person">
+                <contributor type="Person">
+                  
+                  <!-- name -->
+                  <name><xsl:value-of select="./abcd:Person/abcd:FullName"/></name>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:InheritedName">
+                    <familyName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:InheritedName"/></familyName>
+                  </xsl:if>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:GivenNames">
+                    <givenName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:GivenNames"/></givenName>
+                  </xsl:if>
+
+                  <!-- affiliation: Organization -->
+                  <xsl:if test="./abcd:Organisation">
+                    <affiliation type="Organization">
+                      <!-- name -->
+                      <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
+                      <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
+                        <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
+                      </xsl:if>
+                    </affiliation>
+                  </xsl:if>
+                </contributor>
+              </xsl:when>
+
+              <!-- organisation as contributor -->
+              <xsl:otherwise>
+                <contributor type="Organization">
+                  <!-- name -->
+                  <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
+                  <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
+                    <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
+                  </xsl:if>
+                </contributor>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:if test="./abcd:AgentText">
+              <contributor type="Thing">
+                <name><xsl:value-of select="./abcd:AgentText"/></name>
+              </contributor>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+
      <!-- TODO:
-       - Gathering Agents as contributors?
        - variableMeasured
      -->
     </jsonld>
