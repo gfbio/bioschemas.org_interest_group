@@ -100,6 +100,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>1250</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -166,6 +171,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>950</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/4</RecordURI>
             </Unit>
@@ -224,6 +234,13 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>2500</LowerValue>
+                            <UpperValue>2900</UpperValue>
+                            <UnitOfMeasurement>m</UnitOfMeasurement>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -290,6 +307,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>2600</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -356,6 +378,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>200</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -422,6 +449,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>300</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -554,6 +586,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Depth>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>0.5</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Depth>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -620,6 +657,12 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Depth>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>1.2</LowerValue>
+                            <UpperValue>1.5</UpperValue>
+                        </MeasurementOrFactAtomised>
+                    </Depth>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/26</RecordURI>
             </Unit>
@@ -1266,6 +1309,14 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>20</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -1332,6 +1383,14 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>20</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -1464,6 +1523,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Salinity</Parameter>
+                                    <LowerValue>0.1</LowerValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -1530,6 +1599,17 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Vegetation Height</Parameter>
+                                    <LowerValue>10</LowerValue>
+                                    <UnitOfMeasurement>cm</UnitOfMeasurement>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/113</RecordURI>
             </Unit>
@@ -2181,7 +2261,7 @@
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
                             <Method>height of plant or bush in cm</Method>
-                            <LowerValue>34--64</LowerValue>
+                            <LowerValue>0.01--1064</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>

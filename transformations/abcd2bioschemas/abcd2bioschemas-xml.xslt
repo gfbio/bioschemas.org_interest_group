@@ -42,7 +42,12 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
-  
+  <xsl:variable name="altitude" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Altitude"></xsl:variable>
+  <xsl:variable name="biotope_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope/abcd:MeasurementsOrFacts"></xsl:variable>
+  <xsl:variable name="depth" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Depth"></xsl:variable>
+  <xsl:variable name="height" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Height"></xsl:variable>
+  <xsl:variable name="site_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteMeasurementsOrFacts"></xsl:variable>
+  <xsl:variable name="unit_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MeasurementsOrFacts"></xsl:variable>
 
         
 
@@ -411,9 +416,169 @@ exclude-result-prefixes="xsl md panxslt set">
           <name><xsl:value-of select="$dataset_contributors"/></name>
         </contributor>
       </xsl:if>
+
+      <!-- variableMeasured -->
+      <!-- Altitude -->
+      <xsl:variable name="minAltitude">
+        <xsl:for-each select="$altitude/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="ascending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="maxAltitude">
+        <xsl:for-each select="$altitude/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="descending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <variableMeasured type="PropertyValue">
+        <name>Elevation</name>
+        <propertyID>https://schema.org/elevation</propertyID>
+        <xsl:choose>
+          <xsl:when test="$minAltitude = $maxAltitude">
+            <value xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></value>
+            <unitText>m</unitText>
+          </xsl:when>
+          <xsl:otherwise>
+            <minValue xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></minValue>
+            <xsl:if test="$maxAltitude"><maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue></xsl:if>
+            <unitText>m</unitText>
+          </xsl:otherwise>
+        </xsl:choose>
+      </variableMeasured>
+
+      <!-- Depth -->
+      <xsl:variable name="minDepth">
+        <xsl:for-each select="$depth/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="ascending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="maxDepth">
+        <xsl:for-each select="$depth/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="descending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <variableMeasured type="PropertyValue">
+        <name>Depth</name>
+        <propertyID>https://schema.org/depth</propertyID>
+        <xsl:choose>
+          <xsl:when test="$minDepth = $maxDepth">
+            <value xsi:type="xs:double"><xsl:value-of select="$minDepth"/></value>
+            <unitText>m</unitText>
+          </xsl:when>
+          <xsl:otherwise>
+            <minValue xsi:type="xs:double"><xsl:value-of select="$minDepth"/></minValue>
+            <xsl:if test="$maxDepth"><maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue></xsl:if>
+            <unitText>m</unitText>
+          </xsl:otherwise>
+        </xsl:choose>
+      </variableMeasured>
+
+      <!-- Biotope -->
+      <xsl:for-each select="$biotope_measure/abcd:MeasurementOrFact[not(.=preceding::*)]">
+        <variableMeasured type="PropertyValue">
+          <xsl:if test="./abcd:MeasurementOrFactText">
+            <name><xsl:value-of select="./abcd:MeasurementOrFactText"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:MeasurementOrFactAtomised">
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Parameter">
+              <name><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/></name>
+            </xsl:if>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Method">
+              <measurementTechnique><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Method"/></measurementTechnique>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="(./abcd:MeasurementOrFactAtomised/abcd:UpperValue) and not(./abcd:MeasurementOrFactAtomised/abcd:LowerValue = ./abcd:MeasurementOrFactAtomised/abcd:UpperValue)">
+                <maxValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></maxValue>
+                <minValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></minValue>
+              </xsl:when>
+              <xsl:otherwise>
+                <value xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement">
+              <unitText><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement"/></unitText>
+            </xsl:if>
+          </xsl:if>
+        </variableMeasured>
+      </xsl:for-each>
+
+      <!-- Unit measurements -->
+      <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[not(.=preceding::*)]">
+        <variableMeasured type="PropertyValue">
+          <xsl:if test="./abcd:MeasurementOrFactText">
+            <name><xsl:value-of select="./abcd:MeasurementOrFactText"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:MeasurementOrFactAtomised">
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Parameter">
+              <name><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/></name>
+            </xsl:if>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Method">
+              <measurementTechnique><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Method"/></measurementTechnique>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="(./abcd:MeasurementOrFactAtomised/abcd:UpperValue) and not(./abcd:MeasurementOrFactAtomised/abcd:LowerValue = ./abcd:MeasurementOrFactAtomised/abcd:UpperValue)">
+                <maxValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></maxValue>
+                <minValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></minValue>
+              </xsl:when>
+              <xsl:otherwise>
+                <!-- TODO: Check if LowerValue is a number -->
+                <xsl:choose>
+                  <xsl:when test="number(./abcd:MeasurementOrFactAtomised/abcd:LowerValue)">
+                    <value xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <!-- TODO: extract numbers from string. If there are multiple numbers, add multiple value elements -->
+                    <xsl:for-each select="for $n in tokenize(./abcd:MeasurementOrFactAtomised/abcd:LowerValue, '[^0-9]+' )[.] return xs:double($n)">
+                      <value xsi:type="xs:double"><xsl:value-of select="."/></value>
+                    </xsl:for-each>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement">
+              <unitText><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement"/></unitText>
+            </xsl:if>
+          </xsl:if>
+        </variableMeasured>
+      </xsl:for-each>
+
+      <!-- Site measurements -->
+      <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[not(.=preceding::*)]">
+        <variableMeasured type="PropertyValue">
+          <xsl:if test="./abcd:MeasurementOrFactText">
+            <name><xsl:value-of select="./abcd:MeasurementOrFactText"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:MeasurementOrFactAtomised">
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Parameter">
+              <name><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/></name>
+            </xsl:if>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Method">
+              <measurementTechnique><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Method"/></measurementTechnique>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="(./abcd:MeasurementOrFactAtomised/abcd:UpperValue) and not(./abcd:MeasurementOrFactAtomised/abcd:LowerValue = ./abcd:MeasurementOrFactAtomised/abcd:UpperValue)">
+                <maxValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></maxValue>
+                <minValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></minValue>
+              </xsl:when>
+              <xsl:otherwise>
+                <value xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement">
+              <unitText><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement"/></unitText>
+            </xsl:if>
+          </xsl:if>
+        </variableMeasured>
+      </xsl:for-each>
+      
      <!-- TODO:
        - Gathering Agents as contributors?
-       - variableMeasured
+       - variableMeasured:
+          - Identify variants with multiple values in the same element (e.g. in LowerValue)
+          - Add examples
      -->
     </jsonld>
   </xsl:template>
