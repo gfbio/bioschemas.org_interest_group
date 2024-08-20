@@ -506,7 +506,49 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
 
       <!-- Unit measurements -->
-      <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[not(.=preceding::*)]">
+      <!-- TODO: Add UpperValue and LowerValue where it is missing. Number check -->
+      <xsl:variable name="minima">
+        <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact">
+          <xsl:variable name="parameter" select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/>
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter = $parameter]">
+            <xsl:sort select="abcd:MeasurementOrFactAtomised/abcd:LowerValue" data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1">
+              <min>
+                <parameter><xsl:value-of select="$parameter"/></parameter>
+                <value><xsl:value-of select="abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
+              </min>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="maxima">
+        <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact">
+          <xsl:variable name="parameter" select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/>
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter = $parameter]">
+            <xsl:sort select="abcd:MeasurementOrFactAtomised/abcd:UpperValue" data-type="number" order="descending"/>
+            <xsl:if test="position() = 1">
+              <max>
+                <parameter><xsl:value-of select="$parameter"/></parameter>
+                <value><xsl:value-of select="abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></value>
+              </max>
+            </xsl:if>
+          </xsl:for-each>
+        </xsl:for-each>  
+      </xsl:variable>
+      <!-- TODO: Add maxima. Update output. -->
+      <xsl:if test="$minima/min">
+        <!-- Remove duplicates -->
+        <xsl:for-each select="$minima/min">
+          <xsl:if test="not(.=preceding::*)">
+            <variableMeasured type="PropertyValue">
+              <name><xsl:value-of select="parameter"/></name>
+              <value xsi:type="xs:double"><xsl:value-of select="value"/></value>
+            </variableMeasured>
+          </xsl:if>
+        </xsl:for-each>
+      </xsl:if>
+
+      <!-- <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[not(.=preceding::*)]">
         <variableMeasured type="PropertyValue">
           <xsl:if test="./abcd:MeasurementOrFactText">
             <name><xsl:value-of select="./abcd:MeasurementOrFactText"/></name>
@@ -524,13 +566,13 @@ exclude-result-prefixes="xsl md panxslt set">
                 <minValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></minValue>
               </xsl:when>
               <xsl:otherwise>
-                <!-- TODO: Check if LowerValue is a number -->
+                TODO: Check if LowerValue is a number
                 <xsl:choose>
                   <xsl:when test="number(./abcd:MeasurementOrFactAtomised/abcd:LowerValue)">
                     <value xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
                   </xsl:when>
                   <xsl:otherwise>
-                    <!-- TODO: extract numbers from string. If there are multiple numbers, add multiple value elements -->
+                    TODO: extract numbers from string. If there are multiple numbers, add multiple value elements
                     <xsl:for-each select="for $n in tokenize(./abcd:MeasurementOrFactAtomised/abcd:LowerValue, '[^0-9]+' )[.] return xs:double($n)">
                       <value xsi:type="xs:double"><xsl:value-of select="."/></value>
                     </xsl:for-each>
@@ -543,7 +585,7 @@ exclude-result-prefixes="xsl md panxslt set">
             </xsl:if>
           </xsl:if>
         </variableMeasured>
-      </xsl:for-each>
+      </xsl:for-each> -->
 
       <!-- Site measurements -->
       <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[not(.=preceding::*)]">

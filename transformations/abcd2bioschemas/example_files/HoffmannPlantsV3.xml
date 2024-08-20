@@ -1669,6 +1669,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>3</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/114</RecordURI>
             </Unit>
             <Unit>
@@ -1727,6 +1735,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>2</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/117</RecordURI>
             </Unit>
             <Unit>
@@ -1785,6 +1801,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>5</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/119</RecordURI>
             </Unit>
             <Unit>
@@ -1843,6 +1867,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Area</Parameter>
+                            <LowerValue>1</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/120</RecordURI>
             </Unit>
             <Unit>
