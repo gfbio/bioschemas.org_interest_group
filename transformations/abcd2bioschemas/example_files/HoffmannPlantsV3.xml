@@ -1805,7 +1805,8 @@
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
                             <Parameter>Weight</Parameter>
-                            <LowerValue>5</LowerValue>
+                            <LowerValue>3</LowerValue>
+                            <UpperValue>8</UpperValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
@@ -1933,6 +1934,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>5</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/121</RecordURI>
             </Unit>
             <Unit>
