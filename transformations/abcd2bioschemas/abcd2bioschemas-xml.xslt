@@ -506,95 +506,38 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
 
       <!-- Unit measurements -->
-      <!-- TODO: Number check -->
-      <xsl:variable name="minima">
-        <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact">
-          <xsl:variable name="parameter" select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/>
-          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter = $parameter]">
-            <xsl:sort select="abcd:MeasurementOrFactAtomised/abcd:LowerValue" data-type="number" order="ascending"/>
-            <xsl:if test="position() = 1">
-              <min>
-                <parameter><xsl:value-of select="$parameter"/></parameter>
-                <value><xsl:value-of select="abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
-              </min>
-            </xsl:if>
+      <xsl:variable name="parameters">
+        <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MeasurementsOrFacts/abcd:MeasurementOrFact/abcd:MeasurementOrFactAtomised/abcd:Parameter[not(.=preceding::*)]">
+          <parameter><xsl:value-of select="."/></parameter>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:for-each select="$parameters/parameter">
+        <xsl:variable name="param" select="."/>
+        <xsl:variable name="minValue">
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
           </xsl:for-each>
-        </xsl:for-each>
-      </xsl:variable>
-
-      <!-- TODO: Due to issues with sorting and merging values from two different nodes, the following code got complicated and inefficient. Simplify it (ideally for-each-group after upgrade to XSLT 2.0) -->
-      <xsl:variable name="lowerMaxima">
-        <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact">
-          <xsl:variable name="parameter" select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/>
-          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter = $parameter]">
-            <xsl:sort select="abcd:MeasurementOrFactAtomised/abcd:LowerValue" data-type="number" order="descending"/>
-            <xsl:if test="position() = 1">
-              <max>
-                <parameter><xsl:value-of select="$parameter"/></parameter>
-                <value><xsl:value-of select="abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
-              </max>
-            </xsl:if>
+        </xsl:variable>
+        <xsl:variable name="maxValue">
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="descending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
           </xsl:for-each>
-        </xsl:for-each>  
-      </xsl:variable>
-      <xsl:variable name="upperMaxima">
-        <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact">
-          <xsl:variable name="parameter" select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/>
-          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter = $parameter]">
-            <xsl:sort select="abcd:MeasurementOrFactAtomised/abcd:UpperValue" data-type="number" order="descending"/>
-            <xsl:if test="position() = 1">
-              <max>
-                <parameter><xsl:value-of select="$parameter"/></parameter>
-                <value><xsl:value-of select="abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></value>
-              </max>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:variable name="maxMerged">
-        <xsl:for-each select="$upperMaxima/max">
-          <xsl:if test="not(.=preceding::*)">
-            <xsl:copy-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-        <xsl:for-each select="$lowerMaxima/max">
-          <xsl:if test="not(.=preceding::*)">
-            <xsl:copy-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:variable>
-      <!-- keep only the one with the highest value for a parameter -->
-      <xsl:variable name="maxima">
-        <xsl:for-each select="$maxMerged/max">
-          <xsl:variable name="parameter" select="parameter"/>
-          <xsl:variable name="value" select="value"/>
-          <xsl:variable name="max" select="$maxMerged/max[parameter = $parameter]"/>
-          <xsl:if test="not($maxMerged/max[parameter = $parameter]/value > $value)">
-            <xsl:copy-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:variable>
-
-      <xsl:if test="$minima/min">
-        <!-- Remove duplicates -->
-        <xsl:for-each select="$minima/min">
-          <xsl:if test="not(.=preceding::*)">
-            <variableMeasured type="PropertyValue">
-              <name><xsl:value-of select="parameter"/></name>
-              <xsl:choose>
-                <xsl:when test="$maxima/max[parameter = current()/parameter] and not(value = $maxima/max[parameter = current()/parameter]/value)">
-                  <xsl:variable name="max" select="$maxima/max[parameter = current()/parameter]"/>
-                  <minValue xsi:type="xs:double"><xsl:value-of select="value"/></minValue>
-                  <maxValue xsi:type="xs:double"><xsl:value-of select="$max/value"/></maxValue>
-                </xsl:when>
-                <xsl:otherwise>
-                  <value xsi:type="xs:double"><xsl:value-of select="value"/></value>
-                </xsl:otherwise>
-              </xsl:choose>
-            </variableMeasured>
-          </xsl:if>
-        </xsl:for-each>
-      </xsl:if>
+        </xsl:variable>
+        <variableMeasured type="PropertyValue">
+          <name><xsl:value-of select="$param"/></name>
+          <xsl:choose>
+            <xsl:when test="$minValue = $maxValue">
+              <value xsi:type="xs:double"><xsl:value-of select="$minValue"/></value>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minValue"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxValue"/></maxValue>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:for-each>
 
       <!-- Site measurements -->
       <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[not(.=preceding::*)]">

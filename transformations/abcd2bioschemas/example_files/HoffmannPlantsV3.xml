@@ -109,7 +109,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>40--100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -245,7 +245,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -316,7 +316,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -387,7 +387,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>50--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -458,7 +458,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--200</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -524,7 +524,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>50</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -595,7 +595,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>30, 250</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1247,7 +1247,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>15--20</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1321,7 +1321,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>86, 100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1395,7 +1395,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>110, 120</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1461,7 +1461,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>87--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1537,7 +1537,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--140</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1805,8 +1805,8 @@
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
                             <Parameter>Weight</Parameter>
-                            <LowerValue>3</LowerValue>
-                            <UpperValue>8</UpperValue>
+                            <LowerValue>1</LowerValue>
+                            <UpperValue>7</UpperValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
@@ -1938,7 +1938,7 @@
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
                             <Parameter>Weight</Parameter>
-                            <LowerValue>5</LowerValue>
+                            <LowerValue>10</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
@@ -2235,7 +2235,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>11</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
