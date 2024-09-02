@@ -1457,6 +1457,14 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>23</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -1523,6 +1531,14 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>18</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                     <Biotope>
                         <MeasurementsOrFacts>
                             <MeasurementOrFact>
@@ -1599,6 +1615,15 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>19</LowerValue>
+                                <UpperValue>25</UpperValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                     <Biotope>
                         <MeasurementsOrFacts>
                             <MeasurementOrFact>

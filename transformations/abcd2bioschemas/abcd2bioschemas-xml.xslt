@@ -540,31 +540,36 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
 
       <!-- Site measurements -->
-      <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[not(.=preceding::*)]">
+      <xsl:variable name="parameters">
+        <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteMeasurementsOrFacts/abcd:SiteMeasurementOrFact/abcd:MeasurementOrFactAtomised/abcd:Parameter[not(.=preceding::*)]">
+          <parameter><xsl:value-of select="."/></parameter>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:for-each select="$parameters/parameter">
+        <xsl:variable name="param" select="."/>
+        <xsl:variable name="minValue">
+          <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="maxValue">
+          <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="descending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
         <variableMeasured type="PropertyValue">
-          <xsl:if test="./abcd:MeasurementOrFactText">
-            <name><xsl:value-of select="./abcd:MeasurementOrFactText"/></name>
-          </xsl:if>
-          <xsl:if test="./abcd:MeasurementOrFactAtomised">
-            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Parameter">
-              <name><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Parameter"/></name>
-            </xsl:if>
-            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:Method">
-              <measurementTechnique><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:Method"/></measurementTechnique>
-            </xsl:if>
-            <xsl:choose>
-              <xsl:when test="(./abcd:MeasurementOrFactAtomised/abcd:UpperValue) and not(./abcd:MeasurementOrFactAtomised/abcd:LowerValue = ./abcd:MeasurementOrFactAtomised/abcd:UpperValue)">
-                <maxValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UpperValue"/></maxValue>
-                <minValue xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></minValue>
-              </xsl:when>
-              <xsl:otherwise>
-                <value xsi:type="xs:double"><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:LowerValue"/></value>
-              </xsl:otherwise>
-            </xsl:choose>
-            <xsl:if test="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement">
-              <unitText><xsl:value-of select="./abcd:MeasurementOrFactAtomised/abcd:UnitOfMeasurement"/></unitText>
-            </xsl:if>
-          </xsl:if>
+          <name><xsl:value-of select="$param"/></name>
+          <xsl:choose>
+            <xsl:when test="$minValue = $maxValue">
+              <value xsi:type="xs:double"><xsl:value-of select="$minValue"/></value>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minValue"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxValue"/></maxValue>
+            </xsl:otherwise>
+          </xsl:choose>
         </variableMeasured>
       </xsl:for-each>
       
