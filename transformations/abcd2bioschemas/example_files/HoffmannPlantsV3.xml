@@ -1693,6 +1693,17 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Salinity</Parameter>
+                                    <LowerValue>0.1</LowerValue>
+                                    <UpperValue>0.2</UpperValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
@@ -1759,6 +1770,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>ph value</Parameter>
+                                    <LowerValue>6.5</LowerValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
