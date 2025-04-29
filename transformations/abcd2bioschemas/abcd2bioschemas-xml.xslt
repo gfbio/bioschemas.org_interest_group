@@ -43,7 +43,6 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
-  <xsl:variable name="record_uri" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordURI"></xsl:variable>
 
         
 
