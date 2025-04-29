@@ -296,7 +296,7 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
-                <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/6</RecordURI>
+                <RecordURI>B/HoffmannPlants/6</RecordURI>
             </Unit>
             <Unit>
                 <SourceInstitutionID>B</SourceInstitutionID>
