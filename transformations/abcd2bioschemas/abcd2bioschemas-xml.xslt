@@ -25,7 +25,6 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="dataset_version_issued" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:DateIssued"></xsl:variable>
   <xsl:variable name="dataset_direct_access" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:DirectAccessURI"></xsl:variable>
   <xsl:variable name="dataset_citation" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Citations/abcd:Citation"></xsl:variable>
-  <xsl:variable name="dataset_uri" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
   <xsl:variable name="terms_of_use" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:TermsOfUseStatements/abcd:TermsOfUse"></xsl:variable>
   <xsl:variable name="licence" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Licenses/abcd:License"></xsl:variable>
   <xsl:variable name="content_contact" select="/abcd:DataSets/abcd:DataSet/abcd:ContentContacts/abcd:ContentContact"></xsl:variable>
@@ -43,6 +42,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
   
+  <xsl:variable name="gathering_agents" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:GatheringAgents/abcd:GatheringAgent"></xsl:variable>
 
         
 
@@ -92,6 +92,7 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:if test="$dataset_version_major">
         <version>
           <xsl:value-of select="$dataset_version_major" />
+          <!-- TODO: Check if dataset_version_minor's value should be selected here instead -->
           <xsl:if test="$dataset_version_minor"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_major" />
             <xsl:if test="$dataset_version_modifier"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_modifier" />
             </xsl:if>
@@ -110,6 +111,7 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="./abcd:URI">
             <url><xsl:value-of select="./abcd:URI"/></url>
           </xsl:if>
+          <!-- TODO: Check if this variable is really necessary -->
           <xsl:if test="./abcd:URL">
             <url><xsl:value-of select="./abcd:URL"/></url>
           </xsl:if>
@@ -318,7 +320,7 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
@@ -345,6 +347,11 @@ exclude-result-prefixes="xsl md panxslt set">
                   </xsl:if>
                 </affiliation>
               </xsl:if>
+
+              <!-- jobTitle: Roles -->
+              <xsl:for-each select="./abcd:Roles/abcd:Role">
+                <jobTitle><xsl:value-of select="."/></jobTitle>
+              </xsl:for-each>
             </author>
           </xsl:when>
           <xsl:otherwise>
@@ -364,7 +371,7 @@ exclude-result-prefixes="xsl md panxslt set">
                   <identifier><xsl:value-of select="."/></identifier>
                 </xsl:for-each>
               </xsl:if>
-              
+
               <!-- name -->
               <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
               <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
@@ -378,11 +385,11 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
-              
+
               <!-- phone -->
               <xsl:choose>        
                 <xsl:when test="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true']">
@@ -427,10 +434,21 @@ exclude-result-prefixes="xsl md panxslt set">
         </maintainer>
       </xsl:for-each>
       <xsl:if test="$dataset_contributors">
-        <!-- TODO, slit string by comma and repeat element -->
-        <contributor type="Person">
-          <name><xsl:value-of select="$dataset_contributors"/></name>
-        </contributor>
+        <xsl:choose>
+          <xsl:when test="contains($dataset_contributors,',')">
+            <xsl:variable name="contributors" select="tokenize($dataset_contributors,',')"/>
+            <xsl:for-each select="$contributors">
+              <contributor type="Person">
+                <name><xsl:value-of select="."/></name>
+              </contributor>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <contributor type="Person">
+              <name><xsl:value-of select="$dataset_contributors"/></name>
+            </contributor>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
      <!-- TODO:
        - Gathering Agents as contributors?

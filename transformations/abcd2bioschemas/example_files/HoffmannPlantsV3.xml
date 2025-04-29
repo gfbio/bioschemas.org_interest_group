@@ -30,6 +30,53 @@
                 <DateCreated>1999-10-19T00:00:00</DateCreated>
                 <DateModified>2018-01-22T00:00:00</DateModified>
             </RevisionData>
+            <Owners>
+                <Owner>
+                    <Organisation>
+                        <Name>
+                        <Representation language="en">
+                            <Text>Botanic Garden and Botanical Museum Berlin</Text>
+                            <Abbreviation>BGBM</Abbreviation>
+                        </Representation>
+                        </Name>
+                    </Organisation>
+                    <Addresses>
+                        <Address>Königin-Luise-Str. 6-8, 14195 Berlin, Germany</Address>
+                    </Addresses>
+                    <EmailAddresses>
+                        <EmailAddress>biodiversitydata@bgbm.org</EmailAddress>
+                    </EmailAddresses>
+                    <URIs>
+                        <URL>http://www.bgbm.org</URL>
+                    </URIs>
+                </Owner>
+                <Owner>
+                    <Organisation>
+                        <Name>
+                        <Representation language="en">
+                            <Text>Botanic Garden and Botanical Museum Berlin</Text>
+                            <Abbreviation>BGBM</Abbreviation>
+                        </Representation>
+                        </Name>
+                    </Organisation>
+                    <Person>
+                        <FullName>Anke Hoffmann</FullName>
+                    </Person>
+                    <Roles>
+                        <Role>Database administrator</Role>
+                        <Role>Project manager</Role>
+                    </Roles>
+                    <Addresses>
+                        <Address>Königin-Luise-Str. 6-8, 14195 Berlin, Germany</Address>
+                    </Addresses>
+                    <EmailAddresses>
+                        <EmailAddress>biodiversitydata@bgbm.org</EmailAddress>
+                    </EmailAddresses>
+                    <URIs>
+                        <URL>http://www.bgbm.org</URL>
+                    </URIs>
+                </Owner>
+            </Owners>
             <IPRStatements>
                 <Licenses>
                     <License language="en">

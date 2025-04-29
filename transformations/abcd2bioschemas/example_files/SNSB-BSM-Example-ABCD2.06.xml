@@ -1,0 +1,139 @@
+<abcd:DataSets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:abcd="http://www.tdwg.org/schemas/abcd/2.06" xsi:schemaLocation=" http://www.tdwg.org/schemas/abcd/2.06 http://rs.tdwg.org/abcd/2.06/ABCD_2.06.xsd">
+  <abcd:DataSet>
+    <abcd:DatasetGUID>http://id.snsb.info/snsb/projects/3</abcd:DatasetGUID>
+    <abcd:TechnicalContacts>
+      <abcd:TechnicalContact>
+        <abcd:Name>Staatliche Naturwissenschaftliche Sammlungen Bayerns – SNSB IT Center, München</abcd:Name>
+        <abcd:Email>snsb-it-center@snsb.de</abcd:Email>
+      </abcd:TechnicalContact>
+    </abcd:TechnicalContacts>
+    <abcd:ContentContacts>
+      <abcd:ContentContact>
+        <abcd:Name>Dagmar Triebel</abcd:Name>
+        <abcd:Email>triebel@snsb.de</abcd:Email>
+      </abcd:ContentContact>
+    </abcd:ContentContacts>
+    <abcd:Metadata>
+      <abcd:Description>
+        <abcd:Representation language="en">
+          <abcd:Title>The Erysiphales Collection at the Botanische Staatssammlung München</abcd:Title>
+          <abcd:Details>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm</abcd:Details>
+          <abcd:URI>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm</abcd:URI>
+        </abcd:Representation>
+      </abcd:Description>
+      <abcd:RevisionData>
+        <abcd:DateModified>2023-07-12T11:46:59</abcd:DateModified>
+      </abcd:RevisionData>
+      <abcd:Owners>
+        <abcd:Owner>
+          <abcd:Organisation>
+            <abcd:Name>
+              <abcd:Representation language="en">
+                <abcd:Text>Staatliche Naturwissenschaftliche Sammlungen Bayerns – Botanische Staatssammlung München</abcd:Text>
+                <abcd:Abbreviation>SNSB-M</abcd:Abbreviation>
+              </abcd:Representation>
+            </abcd:Name>
+          </abcd:Organisation>
+          <abcd:Person>
+            <abcd:FullName>Dagmar Triebel</abcd:FullName>
+          </abcd:Person>
+          <abcd:Roles>
+            <abcd:Role>Data Owner Contact</abcd:Role>
+          </abcd:Roles>
+          <abcd:EmailAddresses>
+            <abcd:EmailAddress>triebel@snsb.de</abcd:EmailAddress>
+          </abcd:EmailAddresses>
+          <abcd:URIs>
+            <abcd:URL>http://www.botanischestaatssammlung.de/</abcd:URL>
+          </abcd:URIs>
+          <abcd:LogoURI>http://pictures.snsb.info/Logos/BSM/bot-staatss-muc-wbm.png</abcd:LogoURI>
+        </abcd:Owner>
+      </abcd:Owners>
+      <abcd:IPRStatements>
+        <abcd:Copyrights>
+          <abcd:Copyright language="en">
+            <abcd:Text>Staatliche Naturwissenschaftliche Sammlungen Bayerns – Botanische Staatssammlung München</abcd:Text>
+            <abcd:URI>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm</abcd:URI>
+          </abcd:Copyright>
+        </abcd:Copyrights>
+        <abcd:Licenses>
+          <abcd:License language="en">
+            <abcd:Text>CC BY 4.0</abcd:Text>
+            <abcd:URI>https://creativecommons.org/licenses/by/4.0/</abcd:URI>
+          </abcd:License>
+        </abcd:Licenses>
+        <abcd:Disclaimers>
+          <abcd:Disclaimer language="en">
+            <abcd:Text>http://www.snsb.info/Disclaimer.html</abcd:Text>
+            <abcd:URI>http://www.snsb.info/Disclaimer.html</abcd:URI>
+          </abcd:Disclaimer>
+        </abcd:Disclaimers>
+        <abcd:Acknowledgements>
+          <abcd:Acknowledgement language="en">
+            <abcd:Text>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm</abcd:Text>
+            <abcd:URI>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm</abcd:URI>
+          </abcd:Acknowledgement>
+        </abcd:Acknowledgements>
+        <abcd:Citations>
+          <abcd:Citation language="en">
+            <abcd:Text>Triebel, Dagmar (2024). The Erysiphales Collection at the Botanische Staatssammlung München. [Dataset].  Version: 20240206. Data Publisher: Staatliche Naturwissenschaftliche Sammlungen Bayerns – SNSB IT Center, München. http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/About.cfm.</abcd:Text>
+          </abcd:Citation>
+        </abcd:Citations>
+      </abcd:IPRStatements>
+    </abcd:Metadata>
+    <abcd:Units>
+      <abcd:Unit>
+        <abcd:UnitGUID>http://id.snsb.info/snsb/collection/511675/633938/291097</abcd:UnitGUID>
+        <abcd:SourceInstitutionID>M</abcd:SourceInstitutionID>
+        <abcd:SourceID>BSMeryscoll</abcd:SourceID>
+        <abcd:UnitID>M-0222968 / 633938 / 291097</abcd:UnitID>
+        <abcd:DateLastEdited>2016-06-16T15:40:12</abcd:DateLastEdited>
+        <abcd:Identifications>
+          <abcd:Identification>
+            <abcd:Result>
+              <abcd:TaxonIdentified>
+                <abcd:HigherTaxa>
+                  <abcd:HigherTaxon>
+                    <abcd:HigherTaxonName>Plantae</abcd:HigherTaxonName>
+                    <abcd:HigherTaxonRank>regnum</abcd:HigherTaxonRank>
+                  </abcd:HigherTaxon>
+                </abcd:HigherTaxa>
+                <abcd:ScientificName>
+                  <abcd:FullScientificNameString>Acer platanoides L.</abcd:FullScientificNameString>
+                </abcd:ScientificName>
+              </abcd:TaxonIdentified>
+            </abcd:Result>
+          </abcd:Identification>
+        </abcd:Identifications>
+        <abcd:RecordBasis>PreservedSpecimen</abcd:RecordBasis>
+        <abcd:KindOfUnit language="en">dried specimen</abcd:KindOfUnit>
+        <abcd:Gathering>
+          <abcd:DateTime>
+            <abcd:ISODateTimeBegin>2008-10-29</abcd:ISODateTimeBegin>
+          </abcd:DateTime>
+          <abcd:Agents>
+            <abcd:GatheringAgent>
+              <abcd:AgentText>Bernhardt, D. (no. 08/001)</abcd:AgentText>
+            </abcd:GatheringAgent>
+          </abcd:Agents>
+          <abcd:LocalityText>Bayern, Rosenheim, Aventinstraße</abcd:LocalityText>
+          <abcd:Country>
+            <abcd:Name>Germany</abcd:Name>
+            <abcd:ISO3166Code>BRD</abcd:ISO3166Code>
+          </abcd:Country>
+          <abcd:SiteCoordinateSets>
+            <abcd:SiteCoordinates>
+              <abcd:CoordinatesLatLong>
+                <abcd:LongitudeDecimal>12.113205909729</abcd:LongitudeDecimal>
+                <abcd:LatitudeDecimal>47.8553466796875</abcd:LatitudeDecimal>
+                <abcd:SpatialDatum>WGS84</abcd:SpatialDatum>
+              </abcd:CoordinatesLatLong>
+            </abcd:SiteCoordinates>
+          </abcd:SiteCoordinateSets>
+        </abcd:Gathering>
+        <abcd:RecordURI>http://www.botanischestaatssammlung.de/DatabaseClients/BSMeryscoll/DiversityCollection_BSMeryscoll_Details.cfm?CollectionSpecimenID=511675</abcd:RecordURI>
+      </abcd:Unit>
+    </abcd:Units>
+  </abcd:DataSet>
+</abcd:DataSets>
+  
