@@ -68,9 +68,6 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:for-each select="$recordbasis[not(.=preceding::*)]">  
         <additionalType><xsl:value-of select="."/></additionalType>
       </xsl:for-each>
-      <xsl:for-each select="$kind_of_unit[not(.=preceding::*)]">  
-        <additionalType><xsl:value-of select="."/></additionalType>
-      </xsl:for-each>
       <xsl:if test="$dataset_created">
         <dateCreated><xsl:value-of select="substring-before($dataset_created,'T')"/></dateCreated>
       </xsl:if>
@@ -234,6 +231,9 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
         <keyword><xsl:value-of select="."/></keyword>
+      </xsl:for-each>
+      <xsl:for-each select="$kind_of_unit[not(.=preceding::*)]">  
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       
       <xsl:for-each select="$taxon_name[not(.=preceding::*)]">  
