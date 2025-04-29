@@ -25,6 +25,8 @@
                     <Coverage>Uganda (1995-1997)</Coverage>
                 </Representation>
             </Description>
+            <IconURI>http://ww3.bgbm.org/providerResources/BGBM.jpg</IconURI>
+            <DirectAccessURI>https://data-rebind.bgbm.org/rest//db/gfbio/public/GFBioHoffmannPlants/archive/HoffmannPlantsV2.xml.zip</DirectAccessURI>
             <RevisionData>
                 <Creators>Dr. Anke Hoffmann</Creators>
                 <Contributors>Tom Friday Baluku, Maren Gleisberg</Contributors>
