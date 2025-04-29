@@ -217,25 +217,25 @@ exclude-result-prefixes="xsl md panxslt set">
       
       <!-- Keywords -->
       <xsl:for-each select="$scope_taxonomic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$scope_geoecological[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$chronostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$biostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$biotope[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="./abcd:Name"/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$project_title[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       
       <xsl:for-each select="$taxon_name[not(.=preceding::*)]">  
