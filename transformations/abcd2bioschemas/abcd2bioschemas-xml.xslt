@@ -66,16 +66,9 @@ exclude-result-prefixes="xsl md panxslt set">
        <!-- </xsl:variable>-->
       </description>
       <xsl:if test="$dataset_icon">
-        <xsl:choose>
-          <xsl:when test="contains($dataset_icon, 'http')">
-            <image><xsl:value-of select="$dataset_icon" /></image>
-          </xsl:when>
-          <xsl:otherwise>
-            <image type="ImageObject">
-              <identifier><xsl:value-of select="$dataset_icon" /></identifier>
-            </image>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:when test="contains($dataset_icon, 'http')">
+          <image><xsl:value-of select="$dataset_icon" /></image>
+        </xsl:when>
       </xsl:if>
       <xsl:if test="$dataset_access">
         <distribution type="DataDownload">
