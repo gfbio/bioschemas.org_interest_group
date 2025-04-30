@@ -21,6 +21,7 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="dataset_owner" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Owners/abcd:Owner"></xsl:variable>
   <xsl:variable name="dataset_created" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:DateCreated"></xsl:variable>
   <xsl:variable name="dataset_modified" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:DateModified"></xsl:variable>
+  <xsl:variable name="dataset_creators" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:Creators"></xsl:variable>
   <xsl:variable name="dataset_contributors" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:Contributors"></xsl:variable>
   <xsl:variable name="dataset_version_major" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Major"></xsl:variable>
   <xsl:variable name="dataset_version_minor" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Minor"></xsl:variable>
@@ -495,6 +496,23 @@ exclude-result-prefixes="xsl md panxslt set">
             <contributor type="Person">
               <name><xsl:value-of select="$dataset_contributors"/></name>
             </contributor>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
+      <xsl:if test="$dataset_creators">
+        <xsl:choose>
+          <xsl:when test="contains($dataset_creators,',')">
+            <xsl:variable name="creators" select="tokenize($dataset_creators,',')"/>
+            <xsl:for-each select="$creators">
+              <creator type="Thing">
+                <name><xsl:value-of select="."/></name>
+              </creator>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <creator type="Thing">
+              <name><xsl:value-of select="$dataset_creators"/></name>
+            </creator>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
