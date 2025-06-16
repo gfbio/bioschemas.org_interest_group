@@ -146,7 +146,9 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:for-each select="$unit_country[not(.=preceding::*)]">  
         <spatialCoverage type="Country">
           <name><xsl:value-of select="."/></name>
-          <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
+          <xsl:if test="../abcd:ISO3166Code"/>
+            <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
+          </xsl:if>
         </spatialCoverage>
       </xsl:for-each>
 
