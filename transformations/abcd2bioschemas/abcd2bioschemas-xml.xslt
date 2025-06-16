@@ -173,16 +173,6 @@ exclude-result-prefixes="xsl md panxslt set">
                   </xsl:if>
                 </geo>
               </xsl:if>
-              <xsl:if test="$unit_named_areas">
-                <xsl:for-each select="$unit_named_areas">
-                  <containedInPlace type="Place">
-                    <name><xsl:value-of select="."/></name>
-                    <xsl:if test="./abcd:AreaClass">
-                      <additionalType><xsl:value-of select="./abcd:AreaClass"/></additionalType>
-                    </xsl:if>
-                  </containedInPlace>
-                </xsl:for-each>
-              </xsl:if>
             </spatialCoverage>
           </xsl:when>
           <xsl:otherwise>
