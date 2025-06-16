@@ -413,21 +413,12 @@ exclude-result-prefixes="xsl md panxslt set">
         </contributor>
       </xsl:if>
       <xsl:if test="$dataset_creators">
-        <xsl:choose>
-          <xsl:when test="contains($dataset_creators,',')">
-            <xsl:variable name="creators" select="tokenize($dataset_creators,',')"/>
-            <xsl:for-each select="$creators">
-              <creator type="Thing">
-                <name><xsl:value-of select="."/></name>
-              </creator>
-            </xsl:for-each>
-          </xsl:when>
-          <xsl:otherwise>
-            <creator type="Thing">
-              <name><xsl:value-of select="$dataset_creators"/></name>
-            </creator>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:variable name="creators" select="tokenize($dataset_creators,',')"/>
+        <xsl:for-each select="$creators">
+          <creator type="Thing">
+            <name><xsl:value-of select="."/></name>
+          </creator>
+        </xsl:for-each>
       </xsl:if>
      <!-- TODO:
        - Gathering Agents as contributors?
