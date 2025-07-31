@@ -94,6 +94,9 @@
                                 <FullName>Anke Hoffmann</FullName>
                             </Person>
                         </GatheringAgent>
+                        <GatheringAgent>
+                            <AgentText>Anna Hebes, Arno Hebes</AgentText>
+                        </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
                     <Country>

@@ -457,9 +457,20 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:when>
           <xsl:otherwise>
             <xsl:if test="./abcd:AgentText">
-              <contributor type="Thing">
-                <name><xsl:value-of select="./abcd:AgentText"/></name>
-              </contributor>
+              <xsl:choose>
+                <xsl:when test="contains(./abcd:AgentText,',')">
+                  <xsl:for-each select="tokenize(./abcd:AgentText,',')">
+                    <contributor type="Person">
+                      <name><xsl:value-of select="."/></name>
+                    </contributor>
+                  </xsl:for-each>
+                </xsl:when>
+                <xsl:otherwise>
+                  <contributor type="Person">
+                    <name><xsl:value-of select="./abcd:AgentText"/></name>
+                  </contributor>
+                </xsl:otherwise>
+              </xsl:choose>
             </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
