@@ -90,6 +90,7 @@
                         <ProductURI>https://herbarium.bgbm.org/object/test0</ProductURI>
                         <Format>image/jpeg</Format>
                         <FileSize>123456</FileSize>
+                        <Context>Image of a plant specimen collected in Uganda.</Context>
                         <IPR>
                             <Licenses>
                                 <License>

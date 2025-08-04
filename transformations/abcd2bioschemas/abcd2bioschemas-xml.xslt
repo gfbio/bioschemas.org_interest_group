@@ -222,6 +222,7 @@ exclude-result-prefixes="xsl md panxslt set">
         <mainEntityOfPage><xsl:value-of select="./abcd:ProductURI"/></mainEntityOfPage>
         <encodingFormat><xsl:value-of select="./abcd:Format"/></encodingFormat>
         <contentSize><xsl:value-of select="./abcd:FileSize"/> kB</contentSize>
+        <description><xsl:value-of select="./abcd:Context"/></description>
         <xsl:for-each select="./abcd:IPR/abcd:Licenses/abcd:License">
           <license type="CreativeWork">
             <xsl:if test="./abcd:Text">
