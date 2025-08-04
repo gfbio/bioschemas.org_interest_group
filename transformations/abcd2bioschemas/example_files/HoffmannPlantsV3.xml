@@ -89,6 +89,7 @@
                         <FileURI>https://image.bgbm.org/images/internal/HerbarThumbs/test0</FileURI>
                         <ProductURI>https://herbarium.bgbm.org/object/test0</ProductURI>
                         <Format>image/jpeg</Format>
+                        <FileSize>123456</FileSize>
                         <IPR>
                             <Licenses>
                                 <License>
