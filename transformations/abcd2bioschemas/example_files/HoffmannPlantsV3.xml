@@ -149,6 +149,9 @@
                                 <FullName>Anke Hoffmann</FullName>
                             </Person>
                         </GatheringAgent>
+                        <GatheringAgent>
+                            <AgentText>Anna Hebes, Arno Hebes</AgentText>
+                        </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
                     <Country>
@@ -219,7 +222,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Max Mustermann</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
@@ -278,7 +281,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Anna Förster</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
@@ -343,9 +346,7 @@
                     </DateTime>
                     <Agents>
                         <GatheringAgent>
-                            <Person>
-                                <FullName>Anke Hoffmann</FullName>
-                            </Person>
+                            <AgentText>Anna Förster, Arno Förster</AgentText>
                         </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
