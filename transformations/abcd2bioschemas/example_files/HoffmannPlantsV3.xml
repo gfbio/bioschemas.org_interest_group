@@ -91,6 +91,8 @@
                         <Format>image/jpeg</Format>
                         <FileSize>123456</FileSize>
                         <Context>Image of a plant specimen collected in Uganda.</Context>
+                        <CreatedDate>2001-10-26</CreatedDate>
+                        <Creator>Hoffmann (203001113)</Creator>
                         <IPR>
                             <Licenses>
                                 <License>
