@@ -54,6 +54,13 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
 
+  <xsl:variable name="altitude" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Altitude"></xsl:variable>
+  <xsl:variable name="biotope_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope/abcd:MeasurementsOrFacts"></xsl:variable>
+  <xsl:variable name="depth" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Depth"></xsl:variable>
+  <xsl:variable name="height" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Height"></xsl:variable>
+  <xsl:variable name="site_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteMeasurementsOrFacts"></xsl:variable>
+  <xsl:variable name="unit_measure" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MeasurementsOrFacts"></xsl:variable>
+
   <xsl:variable name="multimedia_object" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MultiMediaObjects/abcd:MultiMediaObject"></xsl:variable>
   <xsl:variable name="biotope" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope"></xsl:variable>
   <xsl:variable name="project_title" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Project/abcd:ProjectTitle"></xsl:variable>
@@ -680,6 +687,167 @@ exclude-result-prefixes="xsl md panxslt set">
         </xsl:for-each>
       </xsl:if>
 
+      <!-- variableMeasured -->
+      <!-- Altitude -->
+      <xsl:variable name="minAltitude">
+        <xsl:for-each select="$altitude/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="ascending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="maxAltitude">
+        <xsl:for-each select="$altitude/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="descending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <variableMeasured type="PropertyValue">
+        <name>Elevation</name>
+        <propertyID>https://schema.org/elevation</propertyID>
+        <xsl:choose>
+          <xsl:when test="$minAltitude = $maxAltitude">
+            <value xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></value>
+            <unitText>m</unitText>
+          </xsl:when>
+          <xsl:otherwise>
+            <minValue xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></minValue>
+            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue>
+            <unitText>m</unitText>
+          </xsl:otherwise>
+        </xsl:choose>
+      </variableMeasured>
+
+      <!-- Depth -->
+      <xsl:variable name="minDepth">
+        <xsl:for-each select="$depth/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="ascending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="maxDepth">
+        <xsl:for-each select="$depth/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and (not(../abcd:UnitOfMeasurement) or ../abcd:UnitOfMeasurement = 'm')]">
+          <xsl:sort select="." data-type="number" order="descending"/>
+          <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+        </xsl:for-each>
+      </xsl:variable>
+      <variableMeasured type="PropertyValue">
+        <name>Depth</name>
+        <propertyID>https://schema.org/depth</propertyID>
+        <xsl:choose>
+          <xsl:when test="$minDepth = $maxDepth">
+            <value xsi:type="xs:double"><xsl:value-of select="$minDepth"/></value>
+            <unitText>m</unitText>
+          </xsl:when>
+          <xsl:otherwise>
+            <minValue xsi:type="xs:double"><xsl:value-of select="$minDepth"/></minValue>
+            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue>
+            <unitText>m</unitText>
+          </xsl:otherwise>
+        </xsl:choose>
+      </variableMeasured>
+
+      <!-- Biotope -->
+      <xsl:variable name="parameters">
+        <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope/abcd:MeasurementsOrFacts/abcd:MeasurementOrFact/abcd:MeasurementOrFactAtomised/abcd:Parameter[not(.=preceding::*)]">
+          <parameter><xsl:value-of select="."/></parameter>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:for-each select="$parameters/parameter">
+        <xsl:variable name="param" select="."/>
+        <xsl:variable name="minValue">
+          <xsl:for-each select="$biotope_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="maxValue">
+          <xsl:for-each select="$biotope_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="descending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <variableMeasured type="PropertyValue">
+          <name><xsl:value-of select="$param"/></name>
+          <xsl:choose>
+            <xsl:when test="$minValue = $maxValue">
+              <value xsi:type="xs:double"><xsl:value-of select="$minValue"/></value>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minValue"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxValue"/></maxValue>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:for-each>
+
+      <!-- Unit measurements -->
+      <xsl:variable name="parameters">
+        <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MeasurementsOrFacts/abcd:MeasurementOrFact/abcd:MeasurementOrFactAtomised/abcd:Parameter[not(.=preceding::*)]">
+          <parameter><xsl:value-of select="."/></parameter>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:for-each select="$parameters/parameter">
+        <xsl:variable name="param" select="."/>
+        <xsl:variable name="minValue">
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="maxValue">
+          <xsl:for-each select="$unit_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="descending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <variableMeasured type="PropertyValue">
+          <name><xsl:value-of select="$param"/></name>
+          <xsl:choose>
+            <xsl:when test="$minValue = $maxValue">
+              <value xsi:type="xs:double"><xsl:value-of select="$minValue"/></value>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minValue"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxValue"/></maxValue>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:for-each>
+
+      <!-- Site measurements -->
+      <xsl:variable name="parameters">
+        <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteMeasurementsOrFacts/abcd:SiteMeasurementOrFact/abcd:MeasurementOrFactAtomised/abcd:Parameter[not(.=preceding::*)]">
+          <parameter><xsl:value-of select="."/></parameter>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:for-each select="$parameters/parameter">
+        <xsl:variable name="param" select="."/>
+        <xsl:variable name="minValue">
+          <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="ascending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="maxValue">
+          <xsl:for-each select="$site_measure/abcd:SiteMeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
+            <xsl:sort select="." data-type="number" order="descending"/>
+            <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
+          </xsl:for-each>
+        </xsl:variable>
+        <variableMeasured type="PropertyValue">
+          <name><xsl:value-of select="$param"/></name>
+          <xsl:choose>
+            <xsl:when test="$minValue = $maxValue">
+              <value xsi:type="xs:double"><xsl:value-of select="$minValue"/></value>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minValue"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxValue"/></maxValue>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:for-each>
+      
       <!-- After updating to XSLT 2.0, both the code below and the author mapping code can be moved to a separate function -->
       <xsl:for-each select="$gathering_agents[not(.=preceding::*)]">  
         <xsl:choose>
@@ -742,10 +910,6 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:otherwise>
         </xsl:choose>
       </xsl:for-each>
-
-     <!-- TODO:
-       - variableMeasured
-     -->
     </jsonld>
   </xsl:template>
 </xsl:stylesheet>

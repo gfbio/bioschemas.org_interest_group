@@ -192,6 +192,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>1250</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                     <Stratigraphy>
                         <ChronostratigraphicTerms>
                             <ChronostratigraphicTerm>
@@ -217,7 +222,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>40--100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -314,6 +319,11 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>950</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <UnitReferences>
                     <UnitReference>
@@ -385,11 +395,18 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>2500</LowerValue>
+                            <UpperValue>2900</UpperValue>
+                            <UnitOfMeasurement>m</UnitOfMeasurement>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -454,11 +471,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>2600</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -524,11 +546,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>200</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>50--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -594,11 +621,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Altitude>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>300</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Altitude>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--200</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -664,7 +696,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>50</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -726,11 +758,16 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Depth>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>0.5</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </Depth>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>30, 250</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -793,6 +830,12 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Depth>
+                        <MeasurementOrFactAtomised>
+                            <LowerValue>1.2</LowerValue>
+                            <UpperValue>1.5</UpperValue>
+                        </MeasurementOrFactAtomised>
+                    </Depth>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/26</RecordURI>
             </Unit>
@@ -1377,7 +1420,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>15--20</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1439,11 +1482,19 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>20</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>86, 100</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1505,11 +1556,19 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>20</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>110, 120</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1571,11 +1630,19 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>23</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>87--150</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1637,11 +1704,29 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>18</LowerValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Salinity</Parameter>
+                                    <LowerValue>0.1</LowerValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>100--140</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -1703,6 +1788,26 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <SiteMeasurementsOrFacts>
+                        <SiteMeasurementOrFact>
+                            <MeasurementOrFactAtomised>
+                                <Parameter>Temperature</Parameter>
+                                <LowerValue>19</LowerValue>
+                                <UpperValue>25</UpperValue>
+                            </MeasurementOrFactAtomised>
+                        </SiteMeasurementOrFact>
+                    </SiteMeasurementsOrFacts>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Vegetation Height</Parameter>
+                                    <LowerValue>10</LowerValue>
+                                    <UnitOfMeasurement>cm</UnitOfMeasurement>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/113</RecordURI>
             </Unit>
@@ -1761,7 +1866,26 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>Salinity</Parameter>
+                                    <LowerValue>0.1</LowerValue>
+                                    <UpperValue>0.2</UpperValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>3</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/114</RecordURI>
             </Unit>
             <Unit>
@@ -1819,7 +1943,25 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <MeasurementsOrFacts>
+                            <MeasurementOrFact>
+                                <MeasurementOrFactAtomised>
+                                    <Parameter>ph value</Parameter>
+                                    <LowerValue>6.5</LowerValue>
+                                </MeasurementOrFactAtomised>
+                            </MeasurementOrFact>
+                        </MeasurementsOrFacts>
+                    </Biotope>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>2</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/117</RecordURI>
             </Unit>
             <Unit>
@@ -1878,6 +2020,15 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>1</LowerValue>
+                            <UpperValue>7</UpperValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/119</RecordURI>
             </Unit>
             <Unit>
@@ -1936,6 +2087,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Area</Parameter>
+                            <LowerValue>1</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/120</RecordURI>
             </Unit>
             <Unit>
@@ -1994,6 +2153,14 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <MeasurementsOrFacts>
+                    <MeasurementOrFact>
+                        <MeasurementOrFactAtomised>
+                            <Parameter>Weight</Parameter>
+                            <LowerValue>10</LowerValue>
+                        </MeasurementOrFactAtomised>
+                    </MeasurementOrFact>
+                </MeasurementsOrFacts>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/121</RecordURI>
             </Unit>
             <Unit>
@@ -2287,7 +2454,7 @@
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
-                            <Method>height of plant or bush in cm</Method>
+                            <Parameter>height of plant or bush in cm</Parameter>
                             <LowerValue>11</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
@@ -2354,7 +2521,7 @@
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
                             <Method>height of plant or bush in cm</Method>
-                            <LowerValue>34--64</LowerValue>
+                            <LowerValue>0.01--1064</LowerValue>
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
