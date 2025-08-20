@@ -222,6 +222,13 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <CitationDetail>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). </CitationDetail>
+                    <URI>https://doi.org/10.67890/test-tt26.2</URI>
+                    <DOI>10.67890/test-tt26.2</DOI>
+                    <ReferenceGUID>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/3</ReferenceGUID>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/3</RecordURI>
             </Unit>
             <Unit>
@@ -387,7 +394,12 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
-                <RecordURI>B/HoffmannPlants/6</RecordURI>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <CitationDetail>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). </CitationDetail>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
+                <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/6</RecordURI>
             </Unit>
             <Unit>
                 <SourceInstitutionID>B</SourceInstitutionID>
@@ -451,6 +463,10 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/7</RecordURI>
             </Unit>
             <Unit>
@@ -517,6 +533,10 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/11</RecordURI>
             </Unit>
             <Unit>
