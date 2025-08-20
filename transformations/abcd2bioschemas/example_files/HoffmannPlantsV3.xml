@@ -200,6 +200,20 @@
                         </ChronostratigraphicTerms>
                     </Stratigraphy>
                 </Gathering>
+                <UnitReferences>
+                    <UnitReference>
+                        <TitleCitation>Publication 1 citing this record</TitleCitation> 
+                        <CitationDetail>Aristida adscensionis cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub1</URI>
+                        <DOI>10.34567/test-gg42.2</DOI>
+                        <ReferenceGUID>https://data-rebind.bgbm.org/gfbio/biocase/pub1</ReferenceGUID>
+                    </UnitReference>
+                    <UnitReference>
+                        <TitleCitation>Publication 2 citing this record</TitleCitation> 
+                        <CitationDetail>Aristida adscensionis cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub2</URI>
+                    </UnitReference>
+                </UnitReferences>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
@@ -301,6 +315,18 @@
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
                 </Gathering>
+                <UnitReferences>
+                    <UnitReference>
+                        <TitleCitation>Publication 1 citing this record</TitleCitation> 
+                        <CitationDetail>Bothriochloa insculpta cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub3</URI>
+                    </UnitReference>
+                    <UnitReference>
+                        <TitleCitation>Publication 2 citing this record</TitleCitation> 
+                        <CitationDetail>Bothriochloa insculpta cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub4</URI>
+                    </UnitReference>
+                </UnitReferences>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/4</RecordURI>
             </Unit>
             <Unit>
