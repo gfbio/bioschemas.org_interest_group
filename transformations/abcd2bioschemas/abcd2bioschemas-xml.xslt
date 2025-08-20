@@ -245,7 +245,20 @@ exclude-result-prefixes="xsl md panxslt set">
                 <description><xsl:value-of select="./abcd:CitationDetail"/></description>
               </xsl:if>
               <xsl:if test="./abcd:URI">
-                <identifier><xsl:value-of select="./abcd:URI"/></identifier>
+                <url><xsl:value-of select="./abcd:URI"/></url>
+              </xsl:if>   
+              <xsl:if test="./abcd:DOI">
+                <identifier><xsl:value-of select="./abcd:DOI"/></identifier>
+              </xsl:if>
+              <xsl:if test="./abcd:ReferenceGUID">
+                <xsl:choose>
+                  <xsl:when test="starts-with(./abcd:ReferenceGUID, 'http')">
+                    <identifier type="URL"><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <identifier><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:if>
             </citation>
           </xsl:for-each>
