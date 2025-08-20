@@ -12,20 +12,23 @@ exclude-result-prefixes="xsl md panxslt set">
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
   <xsl:variable name="dataset_id" select="/abcd:DataSets/abcd:DataSet/abcd:DatasetGUID"></xsl:variable>
+  <xsl:variable name="dataset_icon" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IconURI"></xsl:variable>
+  <xsl:variable name="dataset_access" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:DirectAccessURI"></xsl:variable>
+  <xsl:variable name="dataset_coverage" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Coverage"></xsl:variable>
   <xsl:variable name="dataset_title" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Title"></xsl:variable>
   <xsl:variable name="dataset_details" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:Details"></xsl:variable>
   <xsl:variable name="dataset_url" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
   <xsl:variable name="dataset_owner" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Owners/abcd:Owner"></xsl:variable>
   <xsl:variable name="dataset_created" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:DateCreated"></xsl:variable>
   <xsl:variable name="dataset_modified" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:DateModified"></xsl:variable>
+  <xsl:variable name="dataset_creators" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:Creators"></xsl:variable>
   <xsl:variable name="dataset_contributors" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:RevisionData/abcd:Contributors"></xsl:variable>
   <xsl:variable name="dataset_version_major" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Major"></xsl:variable>
   <xsl:variable name="dataset_version_minor" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Minor"></xsl:variable>
   <xsl:variable name="dataset_version_modifier" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:Modifier"></xsl:variable>
   <xsl:variable name="dataset_version_issued" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Version/abcd:DateIssued"></xsl:variable>
   <xsl:variable name="dataset_direct_access" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:DirectAccessURI"></xsl:variable>
-  <xsl:variable name="ipr_statement" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Citations/abcd:Citation/abcd:Text"></xsl:variable>
-  <xsl:variable name="dataset_uri" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Description/abcd:Representation/abcd:URI"></xsl:variable>
+  <xsl:variable name="dataset_citation" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Citations/abcd:Citation"></xsl:variable>
   <xsl:variable name="terms_of_use" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:TermsOfUseStatements/abcd:TermsOfUse"></xsl:variable>
   <xsl:variable name="licence" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:IPRStatements/abcd:Licenses/abcd:License"></xsl:variable>
   <xsl:variable name="content_contact" select="/abcd:DataSets/abcd:DataSet/abcd:ContentContacts/abcd:ContentContact"></xsl:variable>
@@ -33,8 +36,13 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="scope_taxonomic" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:TaxonomicTerms/abcd:TaxonomicTerm"></xsl:variable>
   <xsl:variable name="scope_geoecological" select="/abcd:DataSets/abcd:DataSet/abcd:Metadata/abcd:Scope/abcd:GeoecologicalTerms/*[self::abcd:GeoecologicalTerm or self::abcd:GeoEcologicalTerm]"></xsl:variable>
   
+  <xsl:variable name="unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit"></xsl:variable>
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
+
   <xsl:variable name="source_reference" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:SourceReference"></xsl:variable>
+  <xsl:variable name="gathering_agents" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Agents/abcd:GatheringAgent"></xsl:variable>
+  <xsl:variable name="kind_of_unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:KindOfUnit"></xsl:variable>
+
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
   <xsl:variable name="gathering_date" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:DateTime"></xsl:variable>
@@ -43,9 +51,12 @@ exclude-result-prefixes="xsl md panxslt set">
   <xsl:variable name="biostratigraphic" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Stratigraphy/abcd:BiostratigraphicTerms/abcd:BiostratigraphicTerm/abcd:Term"></xsl:variable>
   <xsl:variable name="taxon_name" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:ScientificName/abcd:FullScientificNameString"></xsl:variable>
   <xsl:variable name="higher_taxon" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Identifications/abcd:Identification/abcd:Result/abcd:TaxonIdentified/abcd:HigherTaxa/abcd:HigherTaxon/abcd:HigherTaxonName"></xsl:variable>
-  
 
-        
+  <xsl:variable name="multimedia_object" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:MultiMediaObjects/abcd:MultiMediaObject"></xsl:variable>
+  <xsl:variable name="biotope" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Biotope"></xsl:variable>
+  <xsl:variable name="project_title" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Project/abcd:ProjectTitle"></xsl:variable>
+ 
+
 
   <xsl:template match="/*">
     <jsonld>
@@ -64,6 +75,27 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:choose>
        <!-- </xsl:variable>-->
       </description>
+      <xsl:if test="$dataset_icon">
+        <xsl:when test="contains($dataset_icon, 'http')">
+          <image><xsl:value-of select="$dataset_icon" /></image>
+        </xsl:when>
+      </xsl:if>
+      <xsl:if test="$dataset_access">
+        <distribution type="DataDownload">
+          <xsl:choose>
+            <xsl:when test="contains($dataset_access,'.zip')">
+              <contentUrl><xsl:value-of select="$dataset_access" /></contentUrl>
+              <encodingFormat>application/zip</encodingFormat>
+            </xsl:when>
+            <xsl:otherwise>
+              <url><xsl:value-of select="$dataset_access" /></url>
+            </xsl:otherwise>
+          </xsl:choose>
+        </distribution>
+      </xsl:if>
+      <xsl:if test="$dataset_coverage">
+        <keywords><xsl:value-of select="$dataset_coverage"/></keywords>
+      </xsl:if>
       <inLanguage>en</inLanguage>
       <xsl:for-each select="$recordbasis[not(.=preceding::*)]">  
         <additionalType><xsl:value-of select="."/></additionalType>
@@ -93,6 +125,7 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:if test="$dataset_version_major">
         <version>
           <xsl:value-of select="$dataset_version_major" />
+          <!-- TODO: Check if dataset_version_minor's value should be selected here instead -->
           <xsl:if test="$dataset_version_minor"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_major" />
             <xsl:if test="$dataset_version_modifier"><xsl:text>.</xsl:text><xsl:value-of select="$dataset_version_modifier" />
             </xsl:if>
@@ -103,14 +136,15 @@ exclude-result-prefixes="xsl md panxslt set">
         <license>
           <xsl:attribute name="type">CreativeWork</xsl:attribute>
           <xsl:if test="./abcd:Text">
-            <name><xsl:value-of select="./abcd:Text"/></name>
+            <text><xsl:value-of select="./abcd:Text"/></text>
           </xsl:if>
-          <xsl:if test="./abcd:Text">
+          <xsl:if test="./abcd:Details">
             <description><xsl:value-of select="./abcd:Details"/></description>
           </xsl:if>
           <xsl:if test="./abcd:URI">
             <url><xsl:value-of select="./abcd:URI"/></url>
           </xsl:if>
+          <!-- TODO: Check if this variable is really necessary -->
           <xsl:if test="./abcd:URL">
             <url><xsl:value-of select="./abcd:URL"/></url>
           </xsl:if>
@@ -120,10 +154,11 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:for-each select="$terms_of_use">
         <usageInfo>
           <xsl:attribute name="type">CreativeWork</xsl:attribute>
+          <name>Terms of Use</name>
           <xsl:if test="./abcd:Text">
-            <name><xsl:value-of select="./abcd:Text"/></name>
+            <text><xsl:value-of select="./abcd:Text"/></text>
           </xsl:if>
-          <xsl:if test="./abcd:Text">
+          <xsl:if test="./abcd:Details">
             <description><xsl:value-of select="./abcd:Details"/></description>
           </xsl:if>
           <xsl:if test="./abcd:URI">
@@ -134,14 +169,116 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:if>
         </usageInfo>
       </xsl:for-each>
-      
-    <xsl:for-each select="$country[not(.=preceding::*)]">  
-      <spatialCoverage type="Country">
-        <name><xsl:value-of select="."/></name>
-        <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
-      </spatialCoverage>
+
+      <xsl:for-each select="$dataset_citation">
+        <usageInfo>
+          <xsl:attribute name="type">CreativeWork</xsl:attribute>
+          <name>Suggested Citation</name>
+          <xsl:if test="./abcd:Text">
+            <text><xsl:value-of select="./abcd:Text"/></text>
+          </xsl:if>
+          <xsl:if test="./abcd:Details">
+            <description><xsl:value-of select="./abcd:Details"/></description>
+          </xsl:if>
+          <xsl:if test="./abcd:URI">
+            <url><xsl:value-of select="./abcd:URI"/></url>
+          </xsl:if>
+          <xsl:if test="./abcd:URL">
+            <url><xsl:value-of select="./abcd:URL"/></url>
+          </xsl:if>
+        </usageInfo>
+      </xsl:for-each>
+
+
+    <xsl:for-each select="$unit">
+      <xsl:if test="./abcd:RecordURI">
+        <about type="BioSample">
+          <xsl:variable name="record_uri" select="./abcd:RecordURI"></xsl:variable>
+          <identifier><xsl:value-of select="$record_uri"/></identifier>
+          <xsl:if test="contains($record_uri,'http')">
+            <url><xsl:value-of select="$record_uri"/></url>
+          </xsl:if>
+        </about>
+      </xsl:if>
     </xsl:for-each>
       
+    <xsl:for-each select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit">
+      <xsl:variable name="unit_locality" select="./abcd:Gathering/abcd:LocalityText"></xsl:variable>
+      <xsl:variable name="unit_coordinates" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
+      <xsl:variable name="unit_latitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LatitudeDecimal"></xsl:variable>
+      <xsl:variable name="unit_longitude" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:LongitudeDecimal"></xsl:variable>
+      <xsl:variable name="unit_spatial_datum" select="./abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong/abcd:SpatialDatum"></xsl:variable>
+      <xsl:variable name="unit_country" select="./abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
+      <xsl:variable name="unit_named_areas" select="./abcd:Gathering/abcd:NamedAreas/abcd:NamedArea"></xsl:variable>
+
+      <xsl:for-each select="$unit_country[not(.=preceding::*)]">  
+        <spatialCoverage type="Country">
+          <name><xsl:value-of select="."/></name>
+          <xsl:if test="../abcd:ISO3166Code"/>
+            <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
+          </xsl:if>
+        </spatialCoverage>
+      </xsl:for-each>
+
+      <xsl:for-each select="$unit_locality">
+        <xsl:choose>
+          <xsl:variable name="preceding_latitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LatitudeDecimal"></xsl:variable>
+          <xsl:variable name="preceding_longitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LongitudeDecimal"></xsl:variable>
+          <xsl:when test="not(.=preceding::*)">
+            <spatialCoverage type="Place">
+              <name><xsl:value-of select="."/></name>
+              <description><xsl:value-of select="."/></description>
+              <xsl:if test="$unit_coordinates">
+                <geo type="GeoCoordinates">
+                  <xsl:if test="$unit_latitude">
+                    <latitude xsi:type="xs:double"><xsl:value-of select="$unit_latitude"/></latitude>
+                  </xsl:if>
+                  <xsl:if test="$unit_longitude">
+                    <longitude xsi:type="xs:double"><xsl:value-of select="$unit_longitude"/></longitude>
+                  </xsl:if>
+                  <xsl:if test="$unit_spatial_datum">
+                    <additionalType><xsl:value-of select="$unit_spatial_datum"/></additionalType>
+                  </xsl:if>
+                </geo>
+              </xsl:if>
+            </spatialCoverage>
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- TODO: Part below can be removed if its if-clause can be combined with the first one -->
+            <xsl:if test="not($preceding_latitude = $unit_latitude and $preceding_longitude = $unit_longitude)">
+              <spatialCoverage type="Place">
+                <name><xsl:value-of select="."/></name>
+                <description><xsl:value-of select="."/></description>
+                <xsl:if test="$unit_coordinates">
+                  <geo type="GeoCoordinates">
+                    <xsl:if test="$unit_latitude">
+                      <latitude xsi:type="xs:double"><xsl:value-of select="$unit_latitude"/></latitude>
+                    </xsl:if>
+                    <xsl:if test="$unit_longitude">
+                      <longitude xsi:type="xs:double"><xsl:value-of select="$unit_longitude"/></longitude>
+                    </xsl:if>
+                    <xsl:if test="$unit_spatial_datum">
+                      <additionalType><xsl:value-of select="$unit_spatial_datum"/></additionalType>
+                    </xsl:if>
+                  </geo>
+                </xsl:if>
+                <xsl:if test="$unit_named_areas">
+                  <xsl:for-each select="$unit_named_areas">
+                    <containedInPlace type="Place">
+                      <name><xsl:value-of select="."/></name>
+                      <xsl:if test="./abcd:AreaClass">
+                        <additionalType><xsl:value-of select="./abcd:AreaClass"/></additionalType>
+                      </xsl:if>
+                    </containedInPlace>
+                  </xsl:for-each>
+                </xsl:if>
+              </spatialCoverage>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+    </xsl:for-each>
+
     <!-- get bounding box coordinates or coordinate pair, if there is only one -->
     <xsl:if test="$coordinates/abcd:LatitudeDecimal and $coordinates/abcd:LongitudeDecimal">
       <spatialCoverage type="Place">
@@ -215,22 +352,64 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:if>
         </temporalCoverage>
       </xsl:if>
+
+    <!-- associatedMedia -->
+    <xsl:for-each select="$multimedia_object">
+      <associatedMedia type="MediaObject">
+        <contentUrl><xsl:value-of select="./abcd:FileURI"/></contentUrl>
+        <mainEntityOfPage><xsl:value-of select="./abcd:ProductURI"/></mainEntityOfPage>
+        <encodingFormat><xsl:value-of select="./abcd:Format"/></encodingFormat>
+        <contentSize><xsl:value-of select="./abcd:FileSize"/> kB</contentSize>
+        <description><xsl:value-of select="./abcd:Context"/></description>
+        <dateCreated type="xs:date"><xsl:value-of select="./abcd:CreatedDate"/></dateCreated>    
+        <creator type="Person">
+          <name><xsl:value-of select="./abcd:Creator"/></name>
+        </creator>
+        <xsl:for-each select="./abcd:IPR/abcd:Licenses/abcd:License">
+          <license type="CreativeWork">
+            <xsl:if test="./abcd:Text">
+              <name><xsl:value-of select="./abcd:Text"/></name>
+            </xsl:if>
+            <xsl:if test="./abcd:Details">
+              <description><xsl:value-of select="./abcd:Details"/></description>
+            </xsl:if>
+            <xsl:if test="./abcd:URI">
+              <url><xsl:value-of select="./abcd:URI"/></url>
+            </xsl:if>
+          </license>
+        </xsl:for-each>
+        <xsl:if test="./abcd:Creator">
+          <creator type="Person">
+            <name><xsl:value-of select="./abcd:Creator"/></name>
+          </creator>
+        </xsl:if>
+      </associatedMedia>
+    </xsl:for-each>    
       
       <!-- Keywords -->
       <xsl:for-each select="$scope_taxonomic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$scope_geoecological[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$chronostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$biostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
-        <keyword><xsl:value-of select="."/></keyword>
+        <keywords><xsl:value-of select="."/></keywords>
+      </xsl:for-each>
+      <xsl:for-each select="$biotope[not(.=preceding::*)]">  
+        <keywords><xsl:value-of select="./abcd:Name"/></keywords>
+      </xsl:for-each>
+      <xsl:for-each select="$project_title[not(.=preceding::*)]">  
+        <keywords><xsl:value-of select="."/></keywords>
+      </xsl:for-each>
+      <xsl:for-each select="$kind_of_unit[not(.=preceding::*)]">  
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
 
       <!-- citation -->
@@ -326,7 +505,7 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
@@ -353,6 +532,11 @@ exclude-result-prefixes="xsl md panxslt set">
                   </xsl:if>
                 </affiliation>
               </xsl:if>
+
+              <!-- jobTitle: Roles -->
+              <xsl:for-each select="./abcd:Roles/abcd:Role">
+                <jobTitle><xsl:value-of select="."/></jobTitle>
+              </xsl:for-each>
             </author>
           </xsl:when>
           <xsl:otherwise>
@@ -372,7 +556,7 @@ exclude-result-prefixes="xsl md panxslt set">
                   <identifier><xsl:value-of select="."/></identifier>
                 </xsl:for-each>
               </xsl:if>
-              
+
               <!-- name -->
               <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
               <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
@@ -386,11 +570,11 @@ exclude-result-prefixes="xsl md panxslt set">
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:for-each select="./abcd:EmailAddresses/abcd:EmailAddress">
-                    <emai1><xsl:value-of select="."/></emai1>
+                    <email><xsl:value-of select="."/></email>
                   </xsl:for-each>
                 </xsl:otherwise>
               </xsl:choose>
-              
+
               <!-- phone -->
               <xsl:choose>        
                 <xsl:when test="./abcd:TelephoneNumbers/abcd:TelephoneNumber[@preferred='true']">
@@ -435,13 +619,95 @@ exclude-result-prefixes="xsl md panxslt set">
         </maintainer>
       </xsl:for-each>
       <xsl:if test="$dataset_contributors">
-        <!-- TODO, slit string by comma and repeat element -->
-        <contributor type="Person">
-          <name><xsl:value-of select="$dataset_contributors"/></name>
-        </contributor>
+        <xsl:choose>
+          <xsl:when test="contains($dataset_contributors,',')">
+            <xsl:variable name="contributors" select="tokenize($dataset_contributors,',')"/>
+            <xsl:for-each select="$contributors">
+              <contributor type="Person">
+                <name><xsl:value-of select="."/></name>
+              </contributor>
+            </xsl:for-each>
+          </xsl:when>
+          <xsl:otherwise>
+            <contributor type="Person">
+              <name><xsl:value-of select="$dataset_contributors"/></name>
+            </contributor>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
+      <xsl:if test="$dataset_creators">
+        <xsl:variable name="creators" select="tokenize($dataset_creators,',')"/>
+        <xsl:for-each select="$creators">
+          <creator type="Thing">
+            <name><xsl:value-of select="."/></name>
+          </creator>
+        </xsl:for-each>
+      </xsl:if>
+
+      <!-- After updating to XSLT 2.0, both the code below and the author mapping code can be moved to a separate function -->
+      <xsl:for-each select="$gathering_agents[not(.=preceding::*)]">  
+        <xsl:choose>
+          <xsl:when test="./abcd:Person or ./abcd:Organisation">
+            <xsl:choose>
+              <xsl:when test="./abcd:Person">
+                <contributor type="Person">
+                  
+                  <!-- name -->
+                  <name><xsl:value-of select="./abcd:Person/abcd:FullName"/></name>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:InheritedName">
+                    <familyName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:InheritedName"/></familyName>
+                  </xsl:if>
+                  <xsl:if test="./abcd:Person/abcd:AtomisedName/abcd:GivenNames">
+                    <givenName><xsl:value-of select="./abcd:Person/abcd:AtomisedName/abcd:GivenNames"/></givenName>
+                  </xsl:if>
+
+                  <!-- affiliation: Organization -->
+                  <xsl:if test="./abcd:Organisation">
+                    <affiliation type="Organization">
+                      <!-- name -->
+                      <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
+                      <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
+                        <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
+                      </xsl:if>
+                    </affiliation>
+                  </xsl:if>
+                </contributor>
+              </xsl:when>
+
+              <!-- organisation as contributor -->
+              <xsl:otherwise>
+                <contributor type="Organization">
+                  <!-- name -->
+                  <name><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Text"/></name>
+                  <xsl:if test="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation">
+                    <alternateName><xsl:value-of select="./abcd:Organisation/abcd:Name/abcd:Representation/abcd:Abbreviation"/></alternateName>
+                  </xsl:if>
+                </contributor>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:if test="./abcd:AgentText">
+              <xsl:choose>
+                <xsl:when test="contains(./abcd:AgentText,',')">
+                  <xsl:for-each select="tokenize(./abcd:AgentText,',')">
+                    <contributor type="Person">
+                      <name><xsl:value-of select="."/></name>
+                    </contributor>
+                  </xsl:for-each>
+                </xsl:when>
+                <xsl:otherwise>
+                  <contributor type="Person">
+                    <name><xsl:value-of select="./abcd:AgentText"/></name>
+                  </contributor>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
+
      <!-- TODO:
-       - Gathering Agents as contributors?
        - variableMeasured
      -->
     </jsonld>
