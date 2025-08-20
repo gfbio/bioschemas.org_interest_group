@@ -441,7 +441,7 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:when>
           <xsl:otherwise>
             <minValue xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></minValue>
-            <xsl:if test="$maxAltitude"><maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue></xsl:if>
+            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue>
             <unitText>m</unitText>
           </xsl:otherwise>
         </xsl:choose>
@@ -470,7 +470,7 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:when>
           <xsl:otherwise>
             <minValue xsi:type="xs:double"><xsl:value-of select="$minDepth"/></minValue>
-            <xsl:if test="$maxDepth"><maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue></xsl:if>
+            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue>
             <unitText>m</unitText>
           </xsl:otherwise>
         </xsl:choose>
@@ -483,7 +483,6 @@ exclude-result-prefixes="xsl md panxslt set">
         </xsl:for-each>
       </xsl:variable>
       <xsl:for-each select="$parameters/parameter">
-        <test><xsl:value-of select="."/></test>
         <xsl:variable name="param" select="."/>
         <xsl:variable name="minValue">
           <xsl:for-each select="$biotope_measure/abcd:MeasurementOrFact[abcd:MeasurementOrFactAtomised/abcd:Parameter=$param]/abcd:MeasurementOrFactAtomised/*[(self::abcd:LowerValue or self::abcd:UpperValue) and number(.)]">
