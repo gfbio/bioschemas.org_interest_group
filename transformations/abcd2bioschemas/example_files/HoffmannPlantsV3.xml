@@ -22,20 +22,75 @@
                     <Title>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</Title>
                     <Details>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). Project data from Dr. Anke Hoffmann, supplementary data of the dissertation: "Hoffmann, Anke (1999). Habitat use and population dynamics of small mammals in the grasslands of the Queen Elizabeth National Park, Uganda. Dissertation Technische Universität Carolo-Wilhelmina zu Braunschweig. Braunschweig." This dataset was mobilized in co-operation with the DFG-funded project reBiND (http://rebind.bgbm.org/). The following Abstract describes the dissertation: In the grasslands of Queen Elizabeth National Park in Uganda small mammal populations were studied between April 1995 and March 1997 using the capture-mark-release-method and radio-telemetry. The 6 study plots were situated in the Imperata-Cymbopogon-grassland and in the bushland-grassland-mosaic and differed mainly in vegetation, habitat structures, cover and grazing pressure due to big game. The effect of fire was an important aspect to all questions of the study. In total 5.702 catches including 1.295 individuals out of 20 species of the families Muridae (12), Myoxidae (1) und Soricidae (7) were recorded in 65 trapping sessions. The most abundant species were Lemniscomys striatus, Mastomys natalensis and Arvicanthis nairobae. For all plots zoocoenosis and dominance structures are described as well as similarity of fauna and species diversity are compared. The population structures of the 3 most common species are compared in 2 plots of their highest abundance. Emphasis of the investigation is laid on the population development, sex ratio, weight and reproduction. Beyond the survival and turnover rates are determined for these populations. For all species habitat preferences are described. The range lenghts of L. striatus and M. natalensis were ascertained for different plots. Their dependence of population density, sex, sexual activity, body weight, rainfall and bush fire is revised. In all 9 L. striatus, 7 M. natalensis and 8 A. nairobae were radio-tracked successfully and their home range sizes, utilization patterns and activities investigated. For these species an inverse relationship between home range size and population density exists.</Details>
                     <URI>https://data.bgbm.org/dataset/gfbio/0004/</URI>
+                    <Coverage>Uganda (1995-1997)</Coverage>
                 </Representation>
             </Description>
+            <IconURI>http://ww3.bgbm.org/providerResources/BGBM.jpg</IconURI>
+            <DirectAccessURI>https://data-rebind.bgbm.org/rest//db/gfbio/public/GFBioHoffmannPlants/archive/HoffmannPlantsV2.xml.zip</DirectAccessURI>
             <RevisionData>
                 <Creators>Dr. Anke Hoffmann</Creators>
                 <Contributors>Tom Friday Baluku, Maren Gleisberg</Contributors>
                 <DateCreated>1999-10-19T00:00:00</DateCreated>
                 <DateModified>2018-01-22T00:00:00</DateModified>
             </RevisionData>
+            <Owners>
+                <Owner>
+                    <Organisation>
+                        <Name>
+                        <Representation language="en">
+                            <Text>Botanic Garden and Botanical Museum Berlin</Text>
+                            <Abbreviation>BGBM</Abbreviation>
+                        </Representation>
+                        </Name>
+                    </Organisation>
+                    <Addresses>
+                        <Address>Königin-Luise-Str. 6-8, 14195 Berlin, Germany</Address>
+                    </Addresses>
+                    <EmailAddresses>
+                        <EmailAddress>biodiversitydata@bgbm.org</EmailAddress>
+                    </EmailAddresses>
+                    <URIs>
+                        <URL>http://www.bgbm.org</URL>
+                    </URIs>
+                </Owner>
+                <Owner>
+                    <Organisation>
+                        <Name>
+                        <Representation language="en">
+                            <Text>Botanic Garden and Botanical Museum Berlin</Text>
+                            <Abbreviation>BGBM</Abbreviation>
+                        </Representation>
+                        </Name>
+                    </Organisation>
+                    <Person>
+                        <FullName>Anke Hoffmann</FullName>
+                    </Person>
+                    <Roles>
+                        <Role>Database administrator</Role>
+                        <Role>Project manager</Role>
+                    </Roles>
+                    <Addresses>
+                        <Address>Königin-Luise-Str. 6-8, 14195 Berlin, Germany</Address>
+                    </Addresses>
+                    <EmailAddresses>
+                        <EmailAddress>biodiversitydata@bgbm.org</EmailAddress>
+                    </EmailAddresses>
+                    <URIs>
+                        <URL>http://www.bgbm.org</URL>
+                    </URIs>
+                </Owner>
+            </Owners>
             <IPRStatements>
                 <Licenses>
                     <License language="en">
                         <Text>CC BY 4.0</Text>
                     </License>
                 </Licenses>
+                <TermsOfUseStatements>
+                    <TermsOfUse language="en">
+                        <Text>Textual metadata on specimens from the Herbarium Berolinense (B) are released under the Creative Commons 1.0 Public Domain Dedication waiver [http://creativecommons.org/publicdomain/zero/1.0/].</Text>
+                    </TermsOfUse>
+                </TermsOfUseStatements>
                 <Citations>
                     <Citation language="en">
                         <Text>Hoffmann, A. (1999). Plants at Crater Road of Queen Elizabeth National Park, Uganda. [Dataset]. Data Publisher: Botanic Garden and Botanical Museum Berlin.  https://data.bgbm.org/dataset/gfbio/0004/.</Text>
@@ -84,6 +139,40 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <MultiMediaObjects>
+                    <MultiMediaObject>
+                        <FileURI>https://image.bgbm.org/images/internal/HerbarThumbs/test0</FileURI>
+                        <ProductURI>https://herbarium.bgbm.org/object/test0</ProductURI>
+                        <Format>image/jpeg</Format>
+                        <FileSize>123456</FileSize>
+                        <Context>Image of a plant specimen collected in Uganda.</Context>
+                        <CreatedDate>2001-10-26</CreatedDate>
+                        <Creator>Hoffmann (203001113)</Creator>
+                        <IPR>
+                            <Licenses>
+                                <License>
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                        <Creator>Hoffmann, Anke</Creator>
+                    </MultiMediaObject>
+                    <MultiMediaObject>
+                        <FileURI>https://herbarium.bgbm.org/data/iiif/test0/manifest.json</FileURI>
+                        <ProductURI>https://iiif.bgbm.org/?manifest=https://herbarium.bgbm.org/object/test0/manifest.json</ProductURI>
+                        <Format>application/json</Format>
+                        <IPR>
+                            <Licenses>
+                                <License>
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                        <Creator>Hoffmann, Anke</Creator>
+                    </MultiMediaObject>
+                </MultiMediaObjects>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -93,6 +182,9 @@
                             <Person>
                                 <FullName>Anke Hoffmann</FullName>
                             </Person>
+                        </GatheringAgent>
+                        <GatheringAgent>
+                            <AgentText>Anna Hebes, Arno Hebes</AgentText>
                         </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
@@ -105,7 +197,28 @@
                             <LowerValue>1250</LowerValue>
                         </MeasurementOrFactAtomised>
                     </Altitude>
+                    <Stratigraphy>
+                        <ChronostratigraphicTerms>
+                            <ChronostratigraphicTerm>
+                                <Term>Quaternary</Term>
+                            </ChronostratigraphicTerm>
+                        </ChronostratigraphicTerms>
+                    </Stratigraphy>
                 </Gathering>
+                <UnitReferences>
+                    <UnitReference>
+                        <TitleCitation>Publication 1 citing this record</TitleCitation> 
+                        <CitationDetail>Aristida adscensionis cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub1</URI>
+                        <DOI>10.34567/test-gg42.2</DOI>
+                        <ReferenceGUID>https://data-rebind.bgbm.org/gfbio/biocase/pub1</ReferenceGUID>
+                    </UnitReference>
+                    <UnitReference>
+                        <TitleCitation>Publication 2 citing this record</TitleCitation> 
+                        <CitationDetail>Aristida adscensionis cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub2</URI>
+                    </UnitReference>
+                </UnitReferences>
                 <MeasurementsOrFacts>
                     <MeasurementOrFact>
                         <MeasurementOrFactAtomised>
@@ -114,6 +227,13 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <CitationDetail>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). </CitationDetail>
+                    <URI>https://doi.org/10.67890/test-tt26.2</URI>
+                    <DOI>10.67890/test-tt26.2</DOI>
+                    <ReferenceGUID>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/3</ReferenceGUID>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/3</RecordURI>
             </Unit>
             <Unit>
@@ -155,6 +275,34 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <MultiMediaObjects>
+                    <MultiMediaObject>
+                        <FileURI>https://image.bgbm.org/images/internal/HerbarThumbs/test1</FileURI>
+                        <ProductURI>https://herbarium.bgbm.org/object/test1</ProductURI>
+                        <Format>image/jpeg</Format>
+                        <IPR>
+                            <Licenses>
+                                <License language="en">
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                    </MultiMediaObject>
+                    <MultiMediaObject>
+                        <FileURI>https://herbarium.bgbm.org/data/iiif/test1/manifest.json</FileURI>
+                        <ProductURI>https://iiif.bgbm.org/?manifest=https://herbarium.bgbm.org/object/test1/manifest.json</ProductURI>
+                        <Format>application/json</Format>
+                        <IPR>
+                            <Licenses>
+                                <License language="en">
+                                    <Text>Partial images provided by this server are released under the Creative Commons cc-by-sa 3.0 (generic) licence [https://creativecommons.org/licenses/by-sa/3.0/de/]. Please credit images to BGBM following our citation guidelines [https://ww2.bgbm.org/Herbarium/cite.cfm]. If you would like to use images in a format or resolution which is not provided here, please contact us (d.roepert[at]bgbm.org).</Text>
+                                    <URI>https://creativecommons.org/licenses/by-sa/3.0/</URI>
+                                </License>
+                            </Licenses>
+                        </IPR>
+                    </MultiMediaObject>
+                </MultiMediaObjects>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -162,7 +310,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Max Mustermann</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
@@ -177,6 +325,18 @@
                         </MeasurementOrFactAtomised>
                     </Altitude>
                 </Gathering>
+                <UnitReferences>
+                    <UnitReference>
+                        <TitleCitation>Publication 1 citing this record</TitleCitation> 
+                        <CitationDetail>Bothriochloa insculpta cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub3</URI>
+                    </UnitReference>
+                    <UnitReference>
+                        <TitleCitation>Publication 2 citing this record</TitleCitation> 
+                        <CitationDetail>Bothriochloa insculpta cited from Hoffmann</CitationDetail>
+                        <URI>https://data-rebind.bgbm.org/gfbio/biocase/pub4</URI>
+                    </UnitReference>
+                </UnitReferences>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/4</RecordURI>
             </Unit>
             <Unit>
@@ -218,6 +378,7 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <KindOfUnit>herbarium sheet</KindOfUnit>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -225,7 +386,7 @@
                     <Agents>
                         <GatheringAgent>
                             <Person>
-                                <FullName>Anke Hoffmann</FullName>
+                                <FullName>Anna Förster</FullName>
                             </Person>
                         </GatheringAgent>
                     </Agents>
@@ -250,6 +411,11 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <CitationDetail>Plant occurrences at Crater Road, Queen Elizabeth National Park, Uganda (April 1995 until March 1997). </CitationDetail>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/6</RecordURI>
             </Unit>
             <Unit>
@@ -297,9 +463,7 @@
                     </DateTime>
                     <Agents>
                         <GatheringAgent>
-                            <Person>
-                                <FullName>Anke Hoffmann</FullName>
-                            </Person>
+                            <AgentText>Anna Förster, Arno Förster</AgentText>
                         </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
@@ -321,6 +485,10 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants at Crater Road of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/7</RecordURI>
             </Unit>
             <Unit>
@@ -392,6 +560,10 @@
                         </MeasurementOrFactAtomised>
                     </MeasurementOrFact>
                 </MeasurementsOrFacts>
+                <SourceReference>
+                    <TitleCitation>Plants of Queen Elizabeth National Park, Uganda.</TitleCitation>
+                    <URI>https://doi.org/10.34656/nkez-tt26.2</URI>
+                </SourceReference>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/11</RecordURI>
             </Unit>
             <Unit>
@@ -641,6 +813,7 @@
                     </Identification>
                 </Identifications>
                 <RecordBasis>HumanObservation</RecordBasis>
+                <KindOfUnit>leaves</KindOfUnit>
                 <Gathering>
                     <DateTime>
                         <ISODateTimeEnd>1995-06-13</ISODateTimeEnd>
@@ -5349,6 +5522,12 @@
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>
                     </Country>
+                    <Biotope>
+                        <Name>Woodland</Name>
+                    </Biotope>
+                    <Project>
+                        <ProjectTitle>Amaranthaceae in Uganda</ProjectTitle>
+                    </Project>
                 </Gathering>
                 <RecordURI>https://data-rebind.bgbm.org/gfbio/biocase/page/B/HoffmannPlants/301</RecordURI>
             </Unit>
