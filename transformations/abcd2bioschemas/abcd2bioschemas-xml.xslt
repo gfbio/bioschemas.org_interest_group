@@ -38,8 +38,11 @@ exclude-result-prefixes="xsl md panxslt set">
   
   <xsl:variable name="unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit"></xsl:variable>
   <xsl:variable name="recordbasis" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:RecordBasis"></xsl:variable>
+
+  <xsl:variable name="source_reference" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:SourceReference"></xsl:variable>
   <xsl:variable name="gathering_agents" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Agents/abcd:GatheringAgent"></xsl:variable>
   <xsl:variable name="kind_of_unit" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:KindOfUnit"></xsl:variable>
+
   <xsl:variable name="coordinates" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:SiteCoordinateSets/abcd:SiteCoordinates/abcd:CoordinatesLatLong"></xsl:variable>
   <xsl:variable name="country" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:Country/abcd:Name"></xsl:variable>
   <xsl:variable name="gathering_date" select="/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit/abcd:Gathering/abcd:DateTime"></xsl:variable>
@@ -407,6 +410,34 @@ exclude-result-prefixes="xsl md panxslt set">
       </xsl:for-each>
       <xsl:for-each select="$kind_of_unit[not(.=preceding::*)]">  
         <keywords><xsl:value-of select="."/></keywords>
+      </xsl:for-each>
+
+      <!-- citation -->
+      <xsl:for-each select="$source_reference[not(.=preceding::*)]">  
+        <citation type="CreativeWork">
+          <xsl:if test="./abcd:TitleCitation">
+            <name><xsl:value-of select="./abcd:TitleCitation"/></name>
+          </xsl:if>
+          <xsl:if test="./abcd:CitationDetail">
+            <description><xsl:value-of select="./abcd:CitationDetail"/></description>
+          </xsl:if>
+          <xsl:if test="./abcd:URI">
+            <url><xsl:value-of select="./abcd:URI"/></url>
+          </xsl:if>
+          <xsl:if test="./abcd:DOI">
+            <identifier><xsl:value-of select="./abcd:DOI"/></identifier>
+          </xsl:if>
+          <xsl:if test="./abcd:ReferenceGUID">
+            <xsl:choose>
+              <xsl:when test="starts-with(./abcd:ReferenceGUID, 'http')">
+                <identifier type="URL"><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+              </xsl:when>
+              <xsl:otherwise>
+                <identifier><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:if>
+        </citation>
       </xsl:for-each>
       
       <xsl:for-each select="$taxon_name[not(.=preceding::*)]">  
