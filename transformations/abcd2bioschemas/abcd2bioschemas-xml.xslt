@@ -203,9 +203,29 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:if test="./abcd:RecordURI">
         <about type="BioSample">
           <xsl:variable name="record_uri" select="./abcd:RecordURI"></xsl:variable>
-          <identifier><xsl:value-of select="$record_uri"/></identifier>
-          <xsl:if test="contains($record_uri,'http')">
-            <url><xsl:value-of select="$record_uri"/></url>
+          <xsl:variable name="source_institution_id" select="./abcd:SourceInstitutionID"/>
+          <xsl:variable name="source_id" select="./abcd:SourceID"/>
+          <xsl:variable name="unit_id" select="./abcd:UnitID"/>
+          <xsl:variable name="triple_id">
+            <xsl:choose>
+              <xsl:when test="$source_institution_id and $source_id and $unit_id">
+                <xsl:value-of select="concat($source_institution_id, ':', $source_id, ':', $unit_id)"/>
+              </xsl:when>
+              <xsl:when test="$source_institution_id and $unit_id">
+                <xsl:value-of select="concat($source_institution_id, ':', $unit_id)"/>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:value-of select="$unit_id"/>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:variable>
+          <identifier><xsl:value-of select="$triple_id"/></identifier>
+          <url><xsl:value-of select="$record_uri"/></url>
+          <xsl:if test="./abcd:UnitGUID">
+            <identifier><xsl:value-of select="./abcd:UnitGUID"/></identifier>
+            <xsl:if test="starts-with(./abcd:UnitGUID, 'http')">
+              <url><xsl:value-of select="./abcd:UnitGUID"/></url>
+            </xsl:if>
           </xsl:if>
         </about>
       </xsl:if>
