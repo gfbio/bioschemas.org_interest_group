@@ -85,9 +85,9 @@ exclude-result-prefixes="xsl md panxslt set">
        <!-- </xsl:variable>-->
       </description>
       <xsl:if test="$dataset_icon">
-        <xsl:when test="contains($dataset_icon, 'http')">
+        <xsl:if test="contains($dataset_icon, 'http')">
           <image><xsl:value-of select="$dataset_icon" /></image>
-        </xsl:when>
+        </xsl:if>
       </xsl:if>
       <xsl:if test="$dataset_access">
         <distribution type="DataDownload">
@@ -243,16 +243,16 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:for-each select="$unit_country[not(.=preceding::*)]">  
         <spatialCoverage type="Country">
           <name><xsl:value-of select="."/></name>
-          <xsl:if test="../abcd:ISO3166Code"/>
+          <xsl:if test="../abcd:ISO3166Code">
             <identifier><xsl:value-of select="../abcd:ISO3166Code"/></identifier>
           </xsl:if>
         </spatialCoverage>
       </xsl:for-each>
 
       <xsl:for-each select="$unit_locality">
+        <xsl:variable name="preceding_latitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LatitudeDecimal"></xsl:variable>
+        <xsl:variable name="preceding_longitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LongitudeDecimal"></xsl:variable>
         <xsl:choose>
-          <xsl:variable name="preceding_latitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LatitudeDecimal"></xsl:variable>
-          <xsl:variable name="preceding_longitude" select="preceding::*[self::abcd:CoordinatesLatLong][1]/abcd:LongitudeDecimal"></xsl:variable>
           <xsl:when test="not(.=preceding::*)">
             <spatialCoverage type="Place">
               <name><xsl:value-of select="."/></name>
