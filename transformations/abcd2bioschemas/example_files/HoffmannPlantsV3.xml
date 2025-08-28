@@ -390,6 +390,14 @@
                         </GatheringAgent>
                     </Agents>
                     <LocalityText>Queen Elizabeth National Park; Crater Road</LocalityText>
+                    <SiteCoordinateSets>
+                        <SiteCoordinates>
+                            <CoordinatesLatLong>
+                                <LatitudeDecimal>-0.2818</LatitudeDecimal>
+                                <LongitudeDecimal>29.9642</LongitudeDecimal>
+                            </CoordinatesLatLong>
+                        </SiteCoordinates>
+                    </SiteCoordinateSets>
                     <Country>
                         <Name> Uganda</Name>
                         <ISO3166Code>UG </ISO3166Code>

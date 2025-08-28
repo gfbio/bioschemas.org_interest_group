@@ -253,7 +253,7 @@ exclude-result-prefixes="xsl md panxslt set">
         <xsl:choose>
           <xsl:when test="not(.=preceding::*)">
             <spatialCoverage type="Place">
-              <description><xsl:value-of select="."/></description>
+              <name><xsl:value-of select="."/></name>
               <xsl:if test="$unit_coordinates">
                 <geo type="GeoCoordinates">
                   <xsl:if test="$unit_latitude">
@@ -269,12 +269,13 @@ exclude-result-prefixes="xsl md panxslt set">
               </xsl:if>
             </spatialCoverage>
           </xsl:when>
+          <xsl:when test=".=preceding::abcd:LocalityText">
+          </xsl:when>
           <xsl:otherwise>
-            <!-- TODO: Part below can be removed if its if-clause can be combined with the one before -->
+            <!-- TODO: Check and test any possible case -->
             <xsl:if test="not($preceding_latitude = $unit_latitude and $preceding_longitude = $unit_longitude)">
               <spatialCoverage type="Place">
                 <name><xsl:value-of select="."/></name>
-                <description><xsl:value-of select="."/></description>
                 <xsl:if test="$unit_coordinates">
                   <geo type="GeoCoordinates">
                     <xsl:if test="$unit_latitude">
@@ -288,8 +289,7 @@ exclude-result-prefixes="xsl md panxslt set">
                     </xsl:if>
                   </geo>
                 </xsl:if>
-                <!-- Comment out united_named_areas until discussed if necessary -->
-                <xsl:if test="$unit_named_areas">
+                <!-- <xsl:if test="$unit_named_areas">
                   <xsl:for-each select="$unit_named_areas">
                     <containedInPlace type="Place">
                       <name><xsl:value-of select="."/></name>
@@ -298,7 +298,7 @@ exclude-result-prefixes="xsl md panxslt set">
                       </xsl:if>
                     </containedInPlace>
                   </xsl:for-each>
-                </xsl:if>
+                </xsl:if> -->
               </spatialCoverage>
             </xsl:if>
           </xsl:otherwise>
