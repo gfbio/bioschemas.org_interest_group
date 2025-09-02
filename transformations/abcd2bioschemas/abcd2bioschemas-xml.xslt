@@ -429,8 +429,8 @@ exclude-result-prefixes="xsl md panxslt set">
       <xsl:for-each select="$lithostratigraphic[not(.=preceding::*)]">  
         <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
-      <xsl:for-each select="$biotope[not(.=preceding::*)]">  
-        <keywords><xsl:value-of select="./abcd:Name"/></keywords>
+      <xsl:for-each select="$biotope/abcd:Name[not(.=preceding::*)]">  
+        <keywords><xsl:value-of select="."/></keywords>
       </xsl:for-each>
       <xsl:for-each select="$project_title[not(.=preceding::*)]">  
         <keywords><xsl:value-of select="."/></keywords>
