@@ -383,15 +383,29 @@ exclude-result-prefixes="xsl md panxslt set">
     <!-- associatedMedia -->
     <xsl:for-each select="$multimedia_object">
       <associatedMedia type="MediaObject">
-        <contentUrl><xsl:value-of select="./abcd:FileURI"/></contentUrl>
-        <mainEntityOfPage><xsl:value-of select="./abcd:ProductURI"/></mainEntityOfPage>
-        <encodingFormat><xsl:value-of select="./abcd:Format"/></encodingFormat>
-        <contentSize><xsl:value-of select="./abcd:FileSize"/> kB</contentSize>
-        <description><xsl:value-of select="./abcd:Context"/></description>
-        <dateCreated type="xs:date"><xsl:value-of select="./abcd:CreatedDate"/></dateCreated>    
-        <creator type="Person">
-          <name><xsl:value-of select="./abcd:Creator"/></name>
-        </creator>
+        <xsl:if test="./abcd:FileURI">
+          <contentUrl><xsl:value-of select="./abcd:FileURI"/></contentUrl>
+        </xsl:if>
+        <xsl:if test="./abcd:ProductURI">
+          <mainEntityOfPage><xsl:value-of select="./abcd:ProductURI"/></mainEntityOfPage>
+        </xsl:if>
+        <xsl:if test="./abcd:Format">
+          <encodingFormat><xsl:value-of select="./abcd:Format"/></encodingFormat>
+        </xsl:if>
+        <xsl:if test="./abcd:FileSize">
+          <contentSize><xsl:value-of select="./abcd:FileSize"/> kB</contentSize>
+        </xsl:if>
+        <xsl:if test="./abcd:Context">
+          <description><xsl:value-of select="./abcd:Context"/></description>
+        </xsl:if>
+        <xsl:if test="./abcd:CreatedDate">
+          <dateCreated type="xs:date"><xsl:value-of select="./abcd:CreatedDate"/></dateCreated>
+        </xsl:if>
+        <xsl:if test="./abcd:Creator">
+          <creator type="Person">
+            <name><xsl:value-of select="./abcd:Creator"/></name>
+          </creator>
+        </xsl:if>
         <xsl:for-each select="./abcd:IPR/abcd:Licenses/abcd:License">
           <license type="CreativeWork">
             <xsl:if test="./abcd:Text">
@@ -405,11 +419,6 @@ exclude-result-prefixes="xsl md panxslt set">
             </xsl:if>
           </license>
         </xsl:for-each>
-        <xsl:if test="./abcd:Creator">
-          <creator type="Person">
-            <name><xsl:value-of select="./abcd:Creator"/></name>
-          </creator>
-        </xsl:if>
       </associatedMedia>
     </xsl:for-each>    
       
