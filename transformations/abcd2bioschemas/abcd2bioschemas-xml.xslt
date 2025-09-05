@@ -450,36 +450,38 @@ exclude-result-prefixes="xsl md panxslt set">
 
 
       <!-- @reverse -->
-      <xsl:element name="reverse">
-        <xsl:for-each select="$unit_references">
-          <xsl:for-each select="./abcd:UnitReference[not(.=preceding::*)]">
-            <citation type="CreativeWork">
-              <xsl:if test="./abcd:TitleCitation">
-                <name><xsl:value-of select="./abcd:TitleCitation"/></name>
-              </xsl:if>
-              <xsl:if test="./abcd:CitationDetail">
-                <description><xsl:value-of select="./abcd:CitationDetail"/></description>
-              </xsl:if>
-              <xsl:if test="./abcd:URI">
-                <url><xsl:value-of select="./abcd:URI"/></url>
-              </xsl:if>   
-              <xsl:if test="./abcd:DOI">
-                <identifier><xsl:value-of select="./abcd:DOI"/></identifier>
-              </xsl:if>
-              <xsl:if test="./abcd:ReferenceGUID">
-                <xsl:choose>
-                  <xsl:when test="starts-with(./abcd:ReferenceGUID, 'http')">
-                    <identifier type="URL"><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <identifier><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:if>
-            </citation>
+      <xsl:if test="count($unit_references/abcd:UnitReference) &gt; 0">
+        <xsl:element name="reverse">
+          <xsl:for-each select="$unit_references">
+            <xsl:for-each select="./abcd:UnitReference[not(.=preceding::*)]">
+              <citation type="CreativeWork">
+                <xsl:if test="./abcd:TitleCitation">
+                  <name><xsl:value-of select="./abcd:TitleCitation"/></name>
+                </xsl:if>
+                <xsl:if test="./abcd:CitationDetail">
+                  <description><xsl:value-of select="./abcd:CitationDetail"/></description>
+                </xsl:if>
+                <xsl:if test="./abcd:URI">
+                  <url><xsl:value-of select="./abcd:URI"/></url>
+                </xsl:if>   
+                <xsl:if test="./abcd:DOI">
+                  <identifier><xsl:value-of select="./abcd:DOI"/></identifier>
+                </xsl:if>
+                <xsl:if test="./abcd:ReferenceGUID">
+                  <xsl:choose>
+                    <xsl:when test="starts-with(./abcd:ReferenceGUID, 'http')">
+                      <identifier type="URL"><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <identifier><xsl:value-of select="./abcd:ReferenceGUID"/></identifier>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:if>
+              </citation>
+            </xsl:for-each>
           </xsl:for-each>
-        </xsl:for-each>
-      </xsl:element>
+        </xsl:element>
+      </xsl:if>
 
       <!-- citation -->
       <xsl:for-each select="$source_reference[not(.=preceding::*)]">  
