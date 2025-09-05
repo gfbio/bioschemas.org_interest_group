@@ -401,7 +401,7 @@ exclude-result-prefixes="xsl md panxslt set">
           <dateCreated type="xs:date"><xsl:value-of select="./abcd:CreatedDate"/></dateCreated>
         </xsl:if>
         <xsl:if test="./abcd:Creator">
-          <creator type="Person">
+          <creator type="Thing">
             <name><xsl:value-of select="./abcd:Creator"/></name>
           </creator>
         </xsl:if>
