@@ -125,9 +125,6 @@ exclude-result-prefixes="xsl md panxslt set">
           </xsl:otherwise>
         </xsl:choose>
       </datePublished>
-      <distribution type="DataDownload">
-        <url><xsl:value-of select="$dataset_direct_access" /></url>
-      </distribution>
       <isAccessibleForFree xsi:type="xs:boolean">true</isAccessibleForFree>
       <size type="QuantitativeValue">
         <value xsi:type="xs:int"><xsl:value-of select="count(/abcd:DataSets/abcd:DataSet/abcd:Units/abcd:Unit)" /></value>
