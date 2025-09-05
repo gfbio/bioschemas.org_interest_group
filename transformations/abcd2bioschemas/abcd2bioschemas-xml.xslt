@@ -71,8 +71,10 @@ exclude-result-prefixes="xsl md panxslt set">
     <jsonld>
       <xsl:attribute name="context">http://schema.org/</xsl:attribute>
       <xsl:attribute name="type">Dataset</xsl:attribute>
-      <xsl:attribute name="id"><xsl:value-of select="$dataset_id"/></xsl:attribute>
-      <identifier><xsl:value-of select="$dataset_id"/></identifier>
+      <xsl:if test="$dataset_id">
+        <xsl:attribute name="id"><xsl:value-of select="$dataset_id"/></xsl:attribute>
+        <identifier><xsl:value-of select="$dataset_id"/></identifier>
+      </xsl:if>
       <name><xsl:value-of select="$dataset_title" /></name>
       <xsl:if test="$dataset_url">
         <url><xsl:value-of select="$dataset_url" /></url>
