@@ -910,9 +910,12 @@ exclude-result-prefixes="xsl md panxslt set">
               <xsl:choose>
                 <xsl:when test="contains(./abcd:AgentText,',')">
                   <xsl:for-each select="tokenize(./abcd:AgentText,',')">
-                    <contributor type="Person">
-                      <name><xsl:value-of select="."/></name>
-                    </contributor>
+                    <!-- Avoid initials as separate contributors -->
+                    <xsl:if test="not(substring(normalize-space(.),2,1) = '.')">
+                      <contributor type="Person">
+                        <name><xsl:value-of select="."/></name>
+                      </contributor>
+                    </xsl:if>
                   </xsl:for-each>
                 </xsl:when>
                 <xsl:otherwise>
