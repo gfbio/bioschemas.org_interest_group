@@ -8,6 +8,7 @@ xmlns:set="http://exslt.org/sets"
 xmlns:panxslt="xalan://de.pangaea.xslt.DatasetXSLTFunctions" 
 xmlns:abcd="http://www.tdwg.org/schemas/abcd/2.06" 
 xmlns:efg="http://www.synthesys.info/ABCDEFG/1.0"
+xmlns:dct="http://purl.org/dc/terms/"
 exclude-result-prefixes="xsl md panxslt set">
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -75,6 +76,7 @@ exclude-result-prefixes="xsl md panxslt set">
         <xsl:attribute name="id"><xsl:value-of select="$dataset_id"/></xsl:attribute>
         <identifier><xsl:value-of select="$dataset_id"/></identifier>
       </xsl:if>
+      <dct:conformsTo type="CreativeWork" id="https://bioschemas.org/profiles/Dataset/1.0-RELEASE"/>
       <name><xsl:value-of select="$dataset_title" /></name>
       <xsl:if test="$dataset_url">
         <url><xsl:value-of select="$dataset_url" /></url>
@@ -716,21 +718,23 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
         </xsl:for-each>
       </xsl:variable>
-      <variableMeasured type="PropertyValue">
-        <name>Elevation</name>
-        <propertyID>https://schema.org/elevation</propertyID>
-        <xsl:choose>
-          <xsl:when test="$minAltitude = $maxAltitude">
-            <value xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></value>
-            <unitText>m</unitText>
-          </xsl:when>
-          <xsl:otherwise>
-            <minValue xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></minValue>
-            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue>
-            <unitText>m</unitText>
-          </xsl:otherwise>
-        </xsl:choose>
-      </variableMeasured>
+      <xsl:if test="$altitude">
+        <variableMeasured type="PropertyValue">
+          <name>Elevation</name>
+          <propertyID>https://schema.org/elevation</propertyID>
+          <xsl:choose>
+            <xsl:when test="$minAltitude = $maxAltitude">
+              <value xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></value>
+              <unitText>m</unitText>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minAltitude"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxAltitude"/></maxValue>
+              <unitText>m</unitText>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:if>
 
       <!-- Depth -->
       <xsl:variable name="minDepth">
@@ -745,21 +749,23 @@ exclude-result-prefixes="xsl md panxslt set">
           <xsl:if test="position() = 1"><xsl:value-of select="."/></xsl:if>
         </xsl:for-each>
       </xsl:variable>
-      <variableMeasured type="PropertyValue">
-        <name>Depth</name>
-        <propertyID>https://schema.org/depth</propertyID>
-        <xsl:choose>
-          <xsl:when test="$minDepth = $maxDepth">
-            <value xsi:type="xs:double"><xsl:value-of select="$minDepth"/></value>
-            <unitText>m</unitText>
-          </xsl:when>
-          <xsl:otherwise>
-            <minValue xsi:type="xs:double"><xsl:value-of select="$minDepth"/></minValue>
-            <maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue>
-            <unitText>m</unitText>
-          </xsl:otherwise>
-        </xsl:choose>
-      </variableMeasured>
+      <xsl:if test="$depth">
+        <variableMeasured type="PropertyValue">
+          <name>Depth</name>
+          <propertyID>https://schema.org/depth</propertyID>
+          <xsl:choose>
+            <xsl:when test="$minDepth = $maxDepth">
+              <value xsi:type="xs:double"><xsl:value-of select="$minDepth"/></value>
+              <unitText>m</unitText>
+            </xsl:when>
+            <xsl:otherwise>
+              <minValue xsi:type="xs:double"><xsl:value-of select="$minDepth"/></minValue>
+              <maxValue xsi:type="xs:double"><xsl:value-of select="$maxDepth"/></maxValue>
+              <unitText>m</unitText>
+            </xsl:otherwise>
+          </xsl:choose>
+        </variableMeasured>
+      </xsl:if>
 
       <!-- Biotope -->
       <!-- <xsl:variable name="parameters">
